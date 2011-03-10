@@ -8,10 +8,10 @@ set -x
 set -e
 
 PROJECT="dbus-glib"
-VERSION="0.92"
+VERSION="0.76"
 SOURCE_DIR="$PROJECT-$VERSION"
 
-DBUS_VERSION="1.4.6"
+DBUS_VERSION="1.2.1"
 DBUS_SOURCE_DIR="dbus-$DBUS_VERSION"
 
 if [ -z "$AUTOBUILD" ] ; then 
