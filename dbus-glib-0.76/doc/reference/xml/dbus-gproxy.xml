@@ -1,0 +1,764 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY dbus-binding-tool SYSTEM "dbus-binding-tool.xml">
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="dbus-glib-DBusGProxy">
+<refmeta>
+<refentrytitle role="top_of_page">DBusGProxy</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>DBUS-GLIB Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>DBusGProxy</refname>
+<refpurpose>DBus Proxy</refpurpose>
+<!--[<xref linkend="desc" endterm="desc.title"/>]-->
+</refnamediv>
+<refsect1>
+<title>Stability Level</title>
+Stable, unless otherwise indicated
+</refsect1>
+
+<refsynopsisdiv role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+
+
+
+                    <link linkend="DBusGProxy">DBusGProxy</link>;
+<link linkend="DBusGProxy">DBusGProxy</link>*         <link linkend="dbus-g-proxy-new-for-name">dbus_g_proxy_new_for_name</link>           (<link linkend="DBusGConnection">DBusGConnection</link> *connection,
+                                                         const <link linkend="char">char</link> *name,
+                                                         const <link linkend="char">char</link> *path,
+                                                         const <link linkend="char">char</link> *interface);
+<link linkend="DBusGProxy">DBusGProxy</link>*         <link linkend="dbus-g-proxy-new-for-name-owner">dbus_g_proxy_new_for_name_owner</link>     (<link linkend="DBusGConnection">DBusGConnection</link> *connection,
+                                                         const <link linkend="char">char</link> *name,
+                                                         const <link linkend="char">char</link> *path,
+                                                         const <link linkend="char">char</link> *interface,
+                                                         <link linkend="GError">GError</link> **error);
+<link linkend="DBusGProxy">DBusGProxy</link>*         <link linkend="dbus-g-proxy-new-from-proxy">dbus_g_proxy_new_from_proxy</link>         (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *interface,
+                                                         const <link linkend="char">char</link> *path_name);
+<link linkend="DBusGProxy">DBusGProxy</link>*         <link linkend="dbus-g-proxy-new-for-peer">dbus_g_proxy_new_for_peer</link>           (<link linkend="DBusGConnection">DBusGConnection</link> *connection,
+                                                         const <link linkend="char">char</link> *path_name,
+                                                         const <link linkend="char">char</link> *interface_name);
+<link linkend="void">void</link>                <link linkend="dbus-g-proxy-set-interface">dbus_g_proxy_set_interface</link>          (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *interface_name);
+const <link linkend="char">char</link>*         <link linkend="dbus-g-proxy-get-path">dbus_g_proxy_get_path</link>               (<link linkend="DBusGProxy">DBusGProxy</link> *proxy);
+const <link linkend="char">char</link>*         <link linkend="dbus-g-proxy-get-bus-name">dbus_g_proxy_get_bus_name</link>           (<link linkend="DBusGProxy">DBusGProxy</link> *proxy);
+const <link linkend="char">char</link>*         <link linkend="dbus-g-proxy-get-interface">dbus_g_proxy_get_interface</link>          (<link linkend="DBusGProxy">DBusGProxy</link> *proxy);
+<link linkend="void">void</link>                <link linkend="dbus-g-proxy-add-signal">dbus_g_proxy_add_signal</link>             (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *signal_name,
+                                                         <link linkend="GType">GType</link> first_type,
+                                                         ...);
+<link linkend="void">void</link>                <link linkend="dbus-g-proxy-connect-signal">dbus_g_proxy_connect_signal</link>         (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *signal_name,
+                                                         <link linkend="GCallback">GCallback</link> handler,
+                                                         <link linkend="void">void</link> *data,
+                                                         <link linkend="GClosureNotify">GClosureNotify</link> free_data_func);
+<link linkend="void">void</link>                <link linkend="dbus-g-proxy-disconnect-signal">dbus_g_proxy_disconnect_signal</link>      (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *signal_name,
+                                                         <link linkend="GCallback">GCallback</link> handler,
+                                                         <link linkend="void">void</link> *data);
+<link linkend="void">void</link>                <link linkend="dbus-g-proxy-send">dbus_g_proxy_send</link>                   (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         <link linkend="DBusMessage">DBusMessage</link> *message,
+                                                         <link linkend="dbus-uint32-t">dbus_uint32_t</link> *client_serial);
+<link linkend="gboolean">gboolean</link>            <link linkend="dbus-g-proxy-call">dbus_g_proxy_call</link>                   (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *method,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="GType">GType</link> first_arg_type,
+                                                         ...);
+<link linkend="gboolean">gboolean</link>            <link linkend="dbus-g-proxy-call-with-timeout">dbus_g_proxy_call_with_timeout</link>      (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *method,
+                                                         <link linkend="int">int</link> timeout,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="GType">GType</link> first_arg_type,
+                                                         ...);
+<link linkend="void">void</link>                <link linkend="dbus-g-proxy-call-no-reply">dbus_g_proxy_call_no_reply</link>          (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *method,
+                                                         <link linkend="GType">GType</link> first_arg_type,
+                                                         ...);
+<link linkend="DBusGProxyCall">DBusGProxyCall</link>*     <link linkend="dbus-g-proxy-begin-call">dbus_g_proxy_begin_call</link>             (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *method,
+                                                         <link linkend="DBusGProxyCallNotify">DBusGProxyCallNotify</link> notify,
+                                                         <link linkend="gpointer">gpointer</link> data,
+                                                         <link linkend="GDestroyNotify">GDestroyNotify</link> destroy,
+                                                         <link linkend="GType">GType</link> first_arg_type,
+                                                         ...);
+<link linkend="DBusGProxyCall">DBusGProxyCall</link>*     <link linkend="dbus-g-proxy-begin-call-with-timeout">dbus_g_proxy_begin_call_with_timeout</link>
+                                                        (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *method,
+                                                         <link linkend="DBusGProxyCallNotify">DBusGProxyCallNotify</link> notify,
+                                                         <link linkend="gpointer">gpointer</link> user_data,
+                                                         <link linkend="GDestroyNotify">GDestroyNotify</link> destroy,
+                                                         <link linkend="int">int</link> timeout,
+                                                         <link linkend="GType">GType</link> first_arg_type,
+                                                         ...);
+<link linkend="gboolean">gboolean</link>            <link linkend="dbus-g-proxy-end-call">dbus_g_proxy_end_call</link>               (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         <link linkend="DBusGProxyCall">DBusGProxyCall</link> *call,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="GType">GType</link> first_arg_type,
+                                                         ...);
+<link linkend="void">void</link>                <link linkend="dbus-g-proxy-cancel-call">dbus_g_proxy_cancel_call</link>            (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         <link linkend="DBusGProxyCall">DBusGProxyCall</link> *call);
+<link linkend="void">void</link>                <link linkend="dbus-g-proxy-set-default-timeout">dbus_g_proxy_set_default_timeout</link>    (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         <link linkend="int">int</link> timeout);
+
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 role="desc">
+<title role="desc.title">Description</title>
+<para>
+A <link linkend="DBusGProxy"><type>DBusGProxy</type></link> is a boxed type abstracting a <link linkend="DBusProxy"><type>DBusProxy</type></link>.</para>
+<para>
+
+</para>
+</refsect1>
+
+<refsect1 role="details">
+<title role="details.title">Details</title>
+<refsect2>
+<title><anchor id="DBusGProxy" role="struct"/>DBusGProxy</title>
+<indexterm><primary>DBusGProxy</primary></indexterm><programlisting>typedef struct {
+  GObject parent;
+} DBusGProxy;
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-new-for-name" role="function"/>dbus_g_proxy_new_for_name ()</title>
+<indexterm><primary>dbus_g_proxy_new_for_name</primary></indexterm><programlisting><link linkend="DBusGProxy">DBusGProxy</link>*         dbus_g_proxy_new_for_name           (<link linkend="DBusGConnection">DBusGConnection</link> *connection,
+                                                         const <link linkend="char">char</link> *name,
+                                                         const <link linkend="char">char</link> *path,
+                                                         const <link linkend="char">char</link> *interface);</programlisting>
+<para>
+Creates a new proxy for a remote interface exported by a connection
+on a message bus. Method calls and signal connections over this
+proxy will go to the name owner; the name's owner is expected to
+support the given interface name. THE NAME OWNER MAY CHANGE OVER
+TIME, for example between two different method calls, unless the
+name is a unique name. If you need a fixed owner, you need to
+request the current owner and bind a proxy to its unique name
+rather than to the generic name; see
+<link linkend="dbus-g-proxy-new-for-name-owner"><function>dbus_g_proxy_new_for_name_owner()</function></link>.
+</para>
+<para>
+A name-associated proxy only makes sense with a message bus, not
+for app-to-app direct dbus connections.
+</para>
+<para>
+This proxy will only emit the "destroy" signal if the
+<link linkend="DBusConnection"><type>DBusConnection</type></link> is disconnected, the proxy has no remaining
+references, or the name is a unique name and its owner
+disappears. If a well-known name changes owner, the proxy will
+still be alive.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>connection</parameter>&nbsp;:</term>
+<listitem><simpara> the connection to the remote bus
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>name</parameter>&nbsp;:</term>
+<listitem><simpara> any name on the message bus
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>path</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>interface</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> new proxy object
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-new-for-name-owner" role="function"/>dbus_g_proxy_new_for_name_owner ()</title>
+<indexterm><primary>dbus_g_proxy_new_for_name_owner</primary></indexterm><programlisting><link linkend="DBusGProxy">DBusGProxy</link>*         dbus_g_proxy_new_for_name_owner     (<link linkend="DBusGConnection">DBusGConnection</link> *connection,
+                                                         const <link linkend="char">char</link> *name,
+                                                         const <link linkend="char">char</link> *path,
+                                                         const <link linkend="char">char</link> *interface,
+                                                         <link linkend="GError">GError</link> **error);</programlisting>
+<para>
+Similar to <link linkend="dbus-g-proxy-new-for-name"><function>dbus_g_proxy_new_for_name()</function></link>, but makes a round-trip
+request to the message bus to get the current name owner, then
+binds the proxy to the unique name of the current owner, rather
+than to the well-known name. As a result, the name owner will
+not change over time, and the proxy will emit the "destroy" signal
+when the owner disappears from the message bus.
+</para>
+<para>
+An example of the difference between <link linkend="dbus-g-proxy-new-for-name"><function>dbus_g_proxy_new_for_name()</function></link>
+and <link linkend="dbus-g-proxy-new-for-name-owner"><function>dbus_g_proxy_new_for_name_owner()</function></link>: if you provide the well-known name
+"org.freedesktop.Database" <link linkend="dbus-g-proxy-new-for-name"><function>dbus_g_proxy_new_for_name()</function></link> remains bound
+to that name as it changes owner. <link linkend="dbus-g-proxy-new-for-name-owner"><function>dbus_g_proxy_new_for_name_owner()</function></link>
+will fail if the name has no owner. If the name has an owner,
+<link linkend="dbus-g-proxy-new-for-name-owner"><function>dbus_g_proxy_new_for_name_owner()</function></link> will bind to the unique name
+of that owner rather than the generic name.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>connection</parameter>&nbsp;:</term>
+<listitem><simpara> the connection to the remote bus
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>name</parameter>&nbsp;:</term>
+<listitem><simpara> any name on the message bus
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>path</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>interface</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&nbsp;:</term>
+<listitem><simpara> return location for an error
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> new proxy object, or <link linkend="NULL:CAPS"><type>NULL</type></link> on error
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-new-from-proxy" role="function"/>dbus_g_proxy_new_from_proxy ()</title>
+<indexterm><primary>dbus_g_proxy_new_from_proxy</primary></indexterm><programlisting><link linkend="DBusGProxy">DBusGProxy</link>*         dbus_g_proxy_new_from_proxy         (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *interface,
+                                                         const <link linkend="char">char</link> *path_name);</programlisting>
+<para>
+Creates a proxy using an existing proxy as a template, substituting
+the specified interface and path.  Either or both may be NULL.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> the proxy to use as a template
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>interface</parameter>&nbsp;:</term>
+<listitem><simpara> name of the interface to call methods on
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>path_name</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> new proxy object
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-new-for-peer" role="function"/>dbus_g_proxy_new_for_peer ()</title>
+<indexterm><primary>dbus_g_proxy_new_for_peer</primary></indexterm><programlisting><link linkend="DBusGProxy">DBusGProxy</link>*         dbus_g_proxy_new_for_peer           (<link linkend="DBusGConnection">DBusGConnection</link> *connection,
+                                                         const <link linkend="char">char</link> *path_name,
+                                                         const <link linkend="char">char</link> *interface_name);</programlisting>
+<para>
+Creates a proxy for an object in peer application (one
+we're directly connected to). That is, this function is
+intended for use when there's no message bus involved,
+we're doing a simple 1-to-1 communication between two
+applications.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>connection</parameter>&nbsp;:</term>
+<listitem><simpara> the connection to the peer
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>path_name</parameter>&nbsp;:</term>
+<listitem><simpara> name of the object inside the peer to call methods on
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>interface_name</parameter>&nbsp;:</term>
+<listitem><simpara> name of the interface to call methods on
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> new proxy object
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-set-interface" role="function"/>dbus_g_proxy_set_interface ()</title>
+<indexterm><primary>dbus_g_proxy_set_interface</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_proxy_set_interface          (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *interface_name);</programlisting>
+<para>
+Sets the object interface proxy is bound to</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> the proxy
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>interface_name</parameter>&nbsp;:</term>
+<listitem><simpara> an object interface 
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-get-path" role="function"/>dbus_g_proxy_get_path ()</title>
+<indexterm><primary>dbus_g_proxy_get_path</primary></indexterm><programlisting>const <link linkend="char">char</link>*         dbus_g_proxy_get_path               (<link linkend="DBusGProxy">DBusGProxy</link> *proxy);</programlisting>
+<para>
+</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> the proxy
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> an object path
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-get-bus-name" role="function"/>dbus_g_proxy_get_bus_name ()</title>
+<indexterm><primary>dbus_g_proxy_get_bus_name</primary></indexterm><programlisting>const <link linkend="char">char</link>*         dbus_g_proxy_get_bus_name           (<link linkend="DBusGProxy">DBusGProxy</link> *proxy);</programlisting>
+<para>
+Gets the bus name a proxy is bound to (may be <link linkend="NULL:CAPS"><type>NULL</type></link> in some cases).
+If you created the proxy with <link linkend="dbus-g-proxy-new-for-name"><function>dbus_g_proxy_new_for_name()</function></link>, then
+the name you passed to that will be returned.
+If you created it with <link linkend="dbus-g-proxy-new-for-name-owner"><function>dbus_g_proxy_new_for_name_owner()</function></link>, then the
+unique connection name will be returned. If you created it
+with <link linkend="dbus-g-proxy-new-for-peer"><function>dbus_g_proxy_new_for_peer()</function></link> then <link linkend="NULL:CAPS"><type>NULL</type></link> will be returned.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> the proxy
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the bus name the proxy sends messages to
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-get-interface" role="function"/>dbus_g_proxy_get_interface ()</title>
+<indexterm><primary>dbus_g_proxy_get_interface</primary></indexterm><programlisting>const <link linkend="char">char</link>*         dbus_g_proxy_get_interface          (<link linkend="DBusGProxy">DBusGProxy</link> *proxy);</programlisting>
+<para>
+Gets the object interface proxy is bound to (may be <link linkend="NULL:CAPS"><type>NULL</type></link> in some cases).</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> the proxy
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> an object interface 
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-add-signal" role="function"/>dbus_g_proxy_add_signal ()</title>
+<indexterm><primary>dbus_g_proxy_add_signal</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_proxy_add_signal             (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *signal_name,
+                                                         <link linkend="GType">GType</link> first_type,
+                                                         ...);</programlisting>
+<para>
+Specifies the argument signature of a signal;.only necessary
+if the remote object does not support introspection.  The arguments
+specified are the GLib types expected.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> the proxy for a remote interface
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>signal_name</parameter>&nbsp;:</term>
+<listitem><simpara> the name of the signal
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>first_type</parameter>&nbsp;:</term>
+<listitem><simpara> the first argument type, or G_TYPE_INVALID if none
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-connect-signal" role="function"/>dbus_g_proxy_connect_signal ()</title>
+<indexterm><primary>dbus_g_proxy_connect_signal</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_proxy_connect_signal         (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *signal_name,
+                                                         <link linkend="GCallback">GCallback</link> handler,
+                                                         <link linkend="void">void</link> *data,
+                                                         <link linkend="GClosureNotify">GClosureNotify</link> free_data_func);</programlisting>
+<para>
+Connect a signal handler to a proxy for a remote interface.  When
+the remote interface emits the specified signal, the proxy will
+emit a corresponding GLib signal.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> a proxy for a remote interface
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>signal_name</parameter>&nbsp;:</term>
+<listitem><simpara> the DBus signal name to listen for
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>handler</parameter>&nbsp;:</term>
+<listitem><simpara> the handler to connect
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>data</parameter>&nbsp;:</term>
+<listitem><simpara> data to pass to handler
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>free_data_func</parameter>&nbsp;:</term>
+<listitem><simpara> callback function to destroy data
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-disconnect-signal" role="function"/>dbus_g_proxy_disconnect_signal ()</title>
+<indexterm><primary>dbus_g_proxy_disconnect_signal</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_proxy_disconnect_signal      (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *signal_name,
+                                                         <link linkend="GCallback">GCallback</link> handler,
+                                                         <link linkend="void">void</link> *data);</programlisting>
+<para>
+Disconnect all signal handlers from a proxy that match the given
+criteria.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> a proxy for a remote interface
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>signal_name</parameter>&nbsp;:</term>
+<listitem><simpara> the DBus signal name to disconnect
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>handler</parameter>&nbsp;:</term>
+<listitem><simpara> the handler to disconnect
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>data</parameter>&nbsp;:</term>
+<listitem><simpara> the data that was registered with handler
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-send" role="function"/>dbus_g_proxy_send ()</title>
+<indexterm><primary>dbus_g_proxy_send</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_proxy_send                   (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         <link linkend="DBusMessage">DBusMessage</link> *message,
+                                                         <link linkend="dbus-uint32-t">dbus_uint32_t</link> *client_serial);</programlisting>
+<para>
+Sends a message to the interface we're proxying for.  Does not
+block or wait for a reply. The message is only actually written out
+when you return to the main loop or block in
+<link linkend="dbus-connection-flush"><function>dbus_connection_flush()</function></link>.
+</para>
+<para>
+The message is modified to be addressed to the target interface.
+That is, a destination name field or whatever is needed will be
+added to the message. The basic point of this function is to add
+the necessary header fields, otherwise it's equivalent to
+<link linkend="dbus-connection-send"><function>dbus_connection_send()</function></link>.
+</para>
+<para>
+This function adds a reference to the message, so the caller
+still owns its original reference.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> a proxy for a remote interface
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>message</parameter>&nbsp;:</term>
+<listitem><simpara> the message to address and send
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>client_serial</parameter>&nbsp;:</term>
+<listitem><simpara> return location for message's serial, or <link linkend="NULL:CAPS"><type>NULL</type></link> 
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-call" role="function"/>dbus_g_proxy_call ()</title>
+<indexterm><primary>dbus_g_proxy_call</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            dbus_g_proxy_call                   (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *method,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="GType">GType</link> first_arg_type,
+                                                         ...);</programlisting>
+<para>
+Function for synchronously invoking a method and receiving reply
+values.  This function is equivalent to dbus_g_proxy_begin_call
+followed by dbus_g_proxy_end_call.  All of the input arguments are
+specified first, followed by G_TYPE_INVALID, followed by all of the
+output values, followed by a second G_TYPE_INVALID.  Note that  
+this means you must always specify G_TYPE_INVALID twice.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> a proxy for a remote interface
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>method</parameter>&nbsp;:</term>
+<listitem><simpara> method to invoke
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&nbsp;:</term>
+<listitem><simpara> return location for an error
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>first_arg_type</parameter>&nbsp;:</term>
+<listitem><simpara> type of first "in" argument
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> <link linkend="FALSE:CAPS"><type>FALSE</type></link> if an error is set, <link linkend="TRUE:CAPS"><type>TRUE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-call-with-timeout" role="function"/>dbus_g_proxy_call_with_timeout ()</title>
+<indexterm><primary>dbus_g_proxy_call_with_timeout</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            dbus_g_proxy_call_with_timeout      (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *method,
+                                                         <link linkend="int">int</link> timeout,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="GType">GType</link> first_arg_type,
+                                                         ...);</programlisting>
+<para>
+Function for synchronously invoking a method and receiving reply
+values.  This function is equivalent to dbus_g_proxy_begin_call
+followed by dbus_g_proxy_end_call.  All of the input arguments are
+specified first, followed by G_TYPE_INVALID, followed by all of the
+output values, followed by a second G_TYPE_INVALID.  Note that
+this means you must always specify G_TYPE_INVALID twice.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> a proxy for a remote interface
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>method</parameter>&nbsp;:</term>
+<listitem><simpara> method to invoke
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>timeout</parameter>&nbsp;:</term>
+<listitem><simpara> specify the timeout in milliseconds
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&nbsp;:</term>
+<listitem><simpara> return location for an error
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>first_arg_type</parameter>&nbsp;:</term>
+<listitem><simpara> type of first "in" argument
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> <link linkend="FALSE:CAPS"><type>FALSE</type></link> if an error is set, <link linkend="TRUE:CAPS"><type>TRUE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-call-no-reply" role="function"/>dbus_g_proxy_call_no_reply ()</title>
+<indexterm><primary>dbus_g_proxy_call_no_reply</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_proxy_call_no_reply          (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *method,
+                                                         <link linkend="GType">GType</link> first_arg_type,
+                                                         ...);</programlisting>
+<para>
+Sends a method call message as with <link linkend="dbus-g-proxy-begin-call"><function>dbus_g_proxy_begin_call()</function></link>, but
+does not ask for a reply or allow you to receive one.
+</para>
+<para>
+TODO: this particular function shouldn't die on out of memory,
+since you should be able to do a call with large arguments.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> a proxy for a remote interface
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>method</parameter>&nbsp;:</term>
+<listitem><simpara> the name of the method to invoke
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>first_arg_type</parameter>&nbsp;:</term>
+<listitem><simpara> type of the first argument
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-begin-call" role="function"/>dbus_g_proxy_begin_call ()</title>
+<indexterm><primary>dbus_g_proxy_begin_call</primary></indexterm><programlisting><link linkend="DBusGProxyCall">DBusGProxyCall</link>*     dbus_g_proxy_begin_call             (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *method,
+                                                         <link linkend="DBusGProxyCallNotify">DBusGProxyCallNotify</link> notify,
+                                                         <link linkend="gpointer">gpointer</link> data,
+                                                         <link linkend="GDestroyNotify">GDestroyNotify</link> destroy,
+                                                         <link linkend="GType">GType</link> first_arg_type,
+                                                         ...);</programlisting>
+<para>
+Asynchronously invokes a method on a remote interface. The method
+call will not be sent over the wire until the application returns
+to the main loop, or blocks in <link linkend="dbus-connection-flush"><function>dbus_connection_flush()</function></link> to write out
+pending data.  The call will be completed after a timeout, or when
+a reply is received.  When the call returns, the callback specified
+will be invoked; you can then collect the results of the call
+(which may be an error, or a reply), use <link linkend="dbus-g-proxy-end-call"><function>dbus_g_proxy_end_call()</function></link>.
+</para>
+<para>
+TODO this particular function shouldn't die on out of memory,
+since you should be able to do a call with large arguments.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> a proxy for a remote interface
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>method</parameter>&nbsp;:</term>
+<listitem><simpara> the name of the method to invoke
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>notify</parameter>&nbsp;:</term>
+<listitem><simpara> callback to be invoked when method returns
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>destroy</parameter>&nbsp;:</term>
+<listitem><simpara> function called to destroy user_data
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>first_arg_type</parameter>&nbsp;:</term>
+<listitem><simpara> type of the first argument
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> call identifier.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-begin-call-with-timeout" role="function"/>dbus_g_proxy_begin_call_with_timeout ()</title>
+<indexterm><primary>dbus_g_proxy_begin_call_with_timeout</primary></indexterm><programlisting><link linkend="DBusGProxyCall">DBusGProxyCall</link>*     dbus_g_proxy_begin_call_with_timeout
+                                                        (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         const <link linkend="char">char</link> *method,
+                                                         <link linkend="DBusGProxyCallNotify">DBusGProxyCallNotify</link> notify,
+                                                         <link linkend="gpointer">gpointer</link> user_data,
+                                                         <link linkend="GDestroyNotify">GDestroyNotify</link> destroy,
+                                                         <link linkend="int">int</link> timeout,
+                                                         <link linkend="GType">GType</link> first_arg_type,
+                                                         ...);</programlisting>
+<para>
+Asynchronously invokes a method on a remote interface. The method
+call will not be sent over the wire until the application returns
+to the main loop, or blocks in <link linkend="dbus-connection-flush"><function>dbus_connection_flush()</function></link> to write out
+pending data.  The call will be completed after a timeout, or when
+a reply is received.  When the call returns, the callback specified
+will be invoked; you can then collect the results of the call
+(which may be an error, or a reply), use <link linkend="dbus-g-proxy-end-call"><function>dbus_g_proxy_end_call()</function></link>.
+</para>
+<para>
+TODO this particular function shouldn't die on out of memory,
+since you should be able to do a call with large arguments.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> a proxy for a remote interface
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>method</parameter>&nbsp;:</term>
+<listitem><simpara> the name of the method to invoke
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>notify</parameter>&nbsp;:</term>
+<listitem><simpara> callback to be invoked when method returns
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&nbsp;:</term>
+<listitem><simpara> user data passed to callback
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>destroy</parameter>&nbsp;:</term>
+<listitem><simpara> function called to destroy user_data
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>timeout</parameter>&nbsp;:</term>
+<listitem><simpara> specify the timeout in milliseconds
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>first_arg_type</parameter>&nbsp;:</term>
+<listitem><simpara> type of the first argument
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> call identifier.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-end-call" role="function"/>dbus_g_proxy_end_call ()</title>
+<indexterm><primary>dbus_g_proxy_end_call</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            dbus_g_proxy_end_call               (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         <link linkend="DBusGProxyCall">DBusGProxyCall</link> *call,
+                                                         <link linkend="GError">GError</link> **error,
+                                                         <link linkend="GType">GType</link> first_arg_type,
+                                                         ...);</programlisting>
+<para>
+Collects the results of a method call. The method call was normally
+initiated with <link linkend="dbus-g-proxy-end-call"><function>dbus_g_proxy_end_call()</function></link>. You may use this function
+outside of the callback given to dbus_g_proxy_begin_call; in that
+case this function will block if the results haven't yet been
+received.
+</para>
+<para>
+If the call results in an error, the error is set as normal for
+GError and the function returns <link linkend="FALSE:CAPS"><type>FALSE</type></link>.
+</para>
+<para>
+Otherwise, the "out" parameters and return value of the
+method are stored in the provided varargs list.
+The list should be terminated with G_TYPE_INVALID.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> a proxy for a remote interface
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>call</parameter>&nbsp;:</term>
+<listitem><simpara> the pending call ID from <link linkend="dbus-g-proxy-begin-call"><function>dbus_g_proxy_begin_call()</function></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>error</parameter>&nbsp;:</term>
+<listitem><simpara> return location for an error
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>first_arg_type</parameter>&nbsp;:</term>
+<listitem><simpara> type of first "out" argument
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> <link linkend="FALSE:CAPS"><type>FALSE</type></link> if an error is set.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-cancel-call" role="function"/>dbus_g_proxy_cancel_call ()</title>
+<indexterm><primary>dbus_g_proxy_cancel_call</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_proxy_cancel_call            (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         <link linkend="DBusGProxyCall">DBusGProxyCall</link> *call);</programlisting>
+<para>
+Cancels a pending method call. The method call was normally
+initiated with <link linkend="dbus-g-proxy-begin-call"><function>dbus_g_proxy_begin_call()</function></link>.  This function
+may not be used on pending calls that have already been
+ended with dbus_g_proxy_end_call.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> a proxy for a remote interface
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>call</parameter>&nbsp;:</term>
+<listitem><simpara> the pending call ID from <link linkend="dbus-g-proxy-begin-call"><function>dbus_g_proxy_begin_call()</function></link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-proxy-set-default-timeout" role="function" condition="since:0.75"/>dbus_g_proxy_set_default_timeout ()</title>
+<indexterm role="0.75"><primary>dbus_g_proxy_set_default_timeout</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_proxy_set_default_timeout    (<link linkend="DBusGProxy">DBusGProxy</link> *proxy,
+                                                         <link linkend="int">int</link> timeout);</programlisting>
+<para>
+Sets the default timeout to use for a proxy. This timeout will be
+used in calls where the timeout is not specified.
+</para>
+<para>
+This is useful for long-running operations that takes longer than
+the default timeout (which is a on the order of magnitude of tens
+of seconds). For some applications, consider using a pattern where
+the method returns once the operation is underway
+(e.g. immediately) and emits a signal when the operation terminates
+(though beware of leaking information with/in the signal return value).</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>proxy</parameter>&nbsp;:</term>
+<listitem><simpara> a proxy for a remote interface
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>timeout</parameter>&nbsp;:</term>
+<listitem><simpara> specify the timeout in milliseconds
+</simpara></listitem></varlistentry>
+</variablelist><para role="since">Since  0.75
+</para></refsect2>
+
+</refsect1>
+
+
+
+<refsect1>
+<title>See Also</title>
+<link linkend="DBusProxy"><type>DBusProxy</type></link>
+</refsect1>
+
+
+<refsect1><refsect2 /><refsect2 /></refsect1>
+</refentry>

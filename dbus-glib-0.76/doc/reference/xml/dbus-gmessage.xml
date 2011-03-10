@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY dbus-binding-tool SYSTEM "dbus-binding-tool.xml">
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="dbus-glib-DBusGMessage">
+<refmeta>
+<refentrytitle role="top_of_page">DBusGMessage</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>DBUS-GLIB Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>DBusGMessage</refname>
+<refpurpose>DBus Message</refpurpose>
+<!--[<xref linkend="desc" endterm="desc.title"/>]-->
+</refnamediv>
+<refsect1>
+<title>Stability Level</title>
+Stable, unless otherwise indicated
+</refsect1>
+
+<refsynopsisdiv role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+
+
+
+                    <link linkend="DBusGMessage">DBusGMessage</link>;
+<link linkend="DBusGMessage">DBusGMessage</link>*       <link linkend="dbus-g-message-ref">dbus_g_message_ref</link>                  (<link linkend="DBusGMessage">DBusGMessage</link> *message);
+<link linkend="void">void</link>                <link linkend="dbus-g-message-unref">dbus_g_message_unref</link>                (<link linkend="DBusGMessage">DBusGMessage</link> *message);
+<link linkend="DBusMessage">DBusMessage</link>*        <link linkend="dbus-g-message-get-message">dbus_g_message_get_message</link>          (<link linkend="DBusGMessage">DBusGMessage</link> *gmessage);
+
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 role="desc">
+<title role="desc.title">Description</title>
+<para>
+A <link linkend="DBusGConnection"><type>DBusGConnection</type></link> is a boxed type abstracting a DBusMessage.</para>
+<para>
+
+</para>
+</refsect1>
+
+<refsect1 role="details">
+<title role="details.title">Details</title>
+<refsect2>
+<title><anchor id="DBusGMessage" role="struct"/>DBusGMessage</title>
+<indexterm><primary>DBusGMessage</primary></indexterm><programlisting>typedef struct _DBusGMessage DBusGMessage;</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-message-ref" role="function"/>dbus_g_message_ref ()</title>
+<indexterm><primary>dbus_g_message_ref</primary></indexterm><programlisting><link linkend="DBusGMessage">DBusGMessage</link>*       dbus_g_message_ref                  (<link linkend="DBusGMessage">DBusGMessage</link> *message);</programlisting>
+<para>
+Increment refcount on a <link linkend="DBusGMessage"><type>DBusGMessage</type></link></para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>message</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the message that was ref'd
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-message-unref" role="function"/>dbus_g_message_unref ()</title>
+<indexterm><primary>dbus_g_message_unref</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_message_unref                (<link linkend="DBusGMessage">DBusGMessage</link> *message);</programlisting>
+<para>
+Decrement refcount on a <link linkend="DBusGMessage"><type>DBusGMessage</type></link></para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>message</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-message-get-message" role="function"/>dbus_g_message_get_message ()</title>
+<indexterm><primary>dbus_g_message_get_message</primary></indexterm><programlisting><link linkend="DBusMessage">DBusMessage</link>*        dbus_g_message_get_message          (<link linkend="DBusGMessage">DBusGMessage</link> *gmessage);</programlisting>
+<para>
+Get the <link linkend="DBusMessage"><type>DBusMessage</type></link> corresponding to this <link linkend="DBusGMessage"><type>DBusGMessage</type></link>.
+The return value does not have its refcount incremented.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>gmessage</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="DBusGMessage"><type>DBusGMessage</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> <link linkend="DBusMessage"><type>DBusMessage</type></link> 
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+<refsect1>
+<title>See Also</title>
+<link linkend="DBusMessage"><type>DBusMessage</type></link>
+</refsect1>
+
+
+<refsect1><refsect2 /><refsect2 /></refsect1>
+</refentry>

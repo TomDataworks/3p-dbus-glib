@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>DBusGMethod</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="D-Bus GLib bindings - Reference Manual">
+<link rel="up" href="ch02.html" title="API Reference">
+<link rel="prev" href="dbus-glib-DBusGMessage.html" title="DBusGMessage">
+<link rel="next" href="dbus-glib-DBusGError.html" title="DBusGError">
+<meta name="generator" content="GTK-Doc V1.9 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="ch01.html" title="Introduction">
+<link rel="chapter" href="ch02.html" title="API Reference">
+<link rel="chapter" href="ch03.html" title="Tools Reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="dbus-glib-DBusGMessage.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">D-Bus GLib bindings - Reference Manual</th>
+<td><a accesskey="n" href="dbus-glib-DBusGError.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts"><nobr><a href="#id322763" class="shortcut">Top</a>
+                  &#160;|&#160;
+                  <a href="#id359024" class="shortcut">Description</a></nobr></td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="dbus-glib-DBusGMethod"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2>
+<a name="id322763"></a><span class="refentrytitle">DBusGMethod</span>
+</h2>
+<p>DBusGMethod &#8212; GMethod Info &amp; Invocation</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" lang="en">
+<a name="id330480"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+
+
+
+                    <a class="link" href="dbus-glib-DBusGMethod.html#DBusGMethodInfo">DBusGMethodInfo</a>;
+                    <a class="link" href="dbus-glib-DBusGMethod.html#DBusGMethodInvocation">DBusGMethodInvocation</a>;
+<a
+href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a>*              <a class="link" href="dbus-glib-DBusGMethod.html#dbus-g-method-get-sender">dbus_g_method_get_sender</a>            (<a class="link" href="dbus-glib-DBusGMethod.html#DBusGMethodInvocation">DBusGMethodInvocation</a> *context);
+DBusMessage*        <a class="link" href="dbus-glib-DBusGMethod.html#dbus-g-method-get-reply">dbus_g_method_get_reply</a>             (<a class="link" href="dbus-glib-DBusGMethod.html#DBusGMethodInvocation">DBusGMethodInvocation</a> *context);
+void                <a class="link" href="dbus-glib-DBusGMethod.html#dbus-g-method-send-reply">dbus_g_method_send_reply</a>            (<a class="link" href="dbus-glib-DBusGMethod.html#DBusGMethodInvocation">DBusGMethodInvocation</a> *context,
+                                                         DBusMessage *reply);
+void                <a class="link" href="dbus-glib-DBusGMethod.html#dbus-g-method-return">dbus_g_method_return</a>                (<a class="link" href="dbus-glib-DBusGMethod.html#DBusGMethodInvocation">DBusGMethodInvocation</a> *context,
+                                                         ...);
+void                <a class="link" href="dbus-glib-DBusGMethod.html#dbus-g-method-return-error">dbus_g_method_return_error</a>          (<a class="link" href="dbus-glib-DBusGMethod.html#DBusGMethodInvocation">DBusGMethodInvocation</a> *context,
+                                                         <a
+href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> *error);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="id359024"></a><h2>Description</h2>
+<p>
+These types are used to call methods on <a
+href="/usr/share/gtk-doc/html/gobject/gobject-The-Base-Object-Type.html#GObject"
+><span class="type">GObject</span></a> objects.</p>
+<p>
+
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="id331028"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="id331039"></a><h3>
+<a name="DBusGMethodInfo"></a>DBusGMethodInfo</h3>
+<a class="indexterm" name="id331051"></a><pre class="programlisting">typedef struct {
+  GCallback                 function;    
+  GClosureMarshal           marshaller;  
+  int                       data_offset; 
+} DBusGMethodInfo;
+</pre>
+<p>
+Object typically generated by <a class="link" href="dbus-binding-tool.html" title="dbus-binding-tool"><span class="type">dbus-binding-tool</span></a> that
+stores a mapping from introspection data to a
+function pointer for a C method to be invoked.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><a
+href="/usr/share/gtk-doc/html/gobject/gobject-Closures.html#GCallback"
+>GCallback</a>&#160;<em class="structfield"><code>function</code></em>;</span></p></td>
+<td> C method to invoke
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><a
+href="/usr/share/gtk-doc/html/gobject/gobject-Closures.html#GClosureMarshal"
+>GClosureMarshal</a>&#160;<em class="structfield"><code>marshaller</code></em>;</span></p></td>
+<td> Marshaller to invoke method 
+</td>
+</tr>
+<tr>
+<td><p><span class="term">int&#160;<em class="structfield"><code>data_offset</code></em>;</span></p></td>
+<td> Offset into the introspection data
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id356481"></a><h3>
+<a name="DBusGMethodInvocation"></a>DBusGMethodInvocation</h3>
+<a class="indexterm" name="id356493"></a><pre class="programlisting">typedef struct _DBusGMethodInvocation DBusGMethodInvocation;</pre>
+<p>
+
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id356508"></a><h3>
+<a name="dbus-g-method-get-sender"></a>dbus_g_method_get_sender ()</h3>
+<a class="indexterm" name="id356520"></a><pre class="programlisting"><a
+href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gchar"
+>gchar</a>*              dbus_g_method_get_sender            (<a class="link" href="dbus-glib-DBusGMethod.html#DBusGMethodInvocation">DBusGMethodInvocation</a> *context);</pre>
+<p>
+Get the sender of a message so we can send a
+"reply" later (i.e. send a message directly
+to a service which invoked the method at a
+later time).</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></p></td>
+<td> the method context
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></p></td>
+<td> the unique name of the sender. It
+is up to the caller to free the returned string.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id338711"></a><h3>
+<a name="dbus-g-method-get-reply"></a>dbus_g_method_get_reply ()</h3>
+<a class="indexterm" name="id338723"></a><pre class="programlisting">DBusMessage*        dbus_g_method_get_reply             (<a class="link" href="dbus-glib-DBusGMethod.html#DBusGMethodInvocation">DBusGMethodInvocation</a> *context);</pre>
+<p>
+Get the reply message to append reply values
+Used as a sidedoor when you can't generate dbus values
+of the correct type due to glib binding limitations</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></p></td>
+<td> the method context
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></p></td>
+<td> a <span class="type">DBusMessage</span> with the reply
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id338790"></a><h3>
+<a name="dbus-g-method-send-reply"></a>dbus_g_method_send_reply ()</h3>
+<a class="indexterm" name="id338803"></a><pre class="programlisting">void                dbus_g_method_send_reply            (<a class="link" href="dbus-glib-DBusGMethod.html#DBusGMethodInvocation">DBusGMethodInvocation</a> *context,
+                                                         DBusMessage *reply);</pre>
+<p>
+Used as a sidedoor when you can't generate dbus values
+of the correct type due to glib binding limitations</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></p></td>
+<td> the method context
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>reply</code></em>&#160;:</span></p></td>
+<td> the reply message, will be unreffed
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id338872"></a><h3>
+<a name="dbus-g-method-return"></a>dbus_g_method_return ()</h3>
+<a class="indexterm" name="id338884"></a><pre class="programlisting">void                dbus_g_method_return                (<a class="link" href="dbus-glib-DBusGMethod.html#DBusGMethodInvocation">DBusGMethodInvocation</a> *context,
+                                                         ...);</pre>
+<p>
+Send a return message for a given method invocation, with arguments.
+This function also frees the sending context.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></p></td>
+<td> the method context
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>...</code></em>&#160;:</span></p></td>
+<td>
+
+
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id338948"></a><h3>
+<a name="dbus-g-method-return-error"></a>dbus_g_method_return_error ()</h3>
+<a class="indexterm" name="id338960"></a><pre class="programlisting">void                dbus_g_method_return_error          (<a class="link" href="dbus-glib-DBusGMethod.html#DBusGMethodInvocation">DBusGMethodInvocation</a> *context,
+                                                         <a
+href="/usr/share/gtk-doc/html/glib/glib-Error-Reporting.html#GError"
+>GError</a> *error);</pre>
+<p>
+Send a error message for a given method invocation.
+This function also frees the sending context.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>context</code></em>&#160;:</span></p></td>
+<td> the method context
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>error</code></em>&#160;:</span></p></td>
+<td> the error to send
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="id339031"></a><h2>See Also</h2>
+<a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage"><span class="type">DBusGMessage</span></a>
+</div>
+<div class="refsect1" lang="en">
+<a name="id339045"></a><div class="refsect2" lang="en"><a name="id339046"></a></div>
+<hr>
+<div class="refsect2" lang="en"><a name="id339047"></a></div>
+</div>
+</div>
+</body>
+</html>

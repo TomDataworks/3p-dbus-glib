@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY dbus-binding-tool SYSTEM "dbus-binding-tool.xml">
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="dbus-glib-DBusGError">
+<refmeta>
+<refentrytitle role="top_of_page">DBusGError</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>DBUS-GLIB Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>DBusGError</refname>
+<refpurpose>DBus GError</refpurpose>
+<!--[<xref linkend="desc" endterm="desc.title"/>]-->
+</refnamediv>
+<refsect1>
+<title>Stability Level</title>
+Stable, unless otherwise indicated
+</refsect1>
+
+<refsynopsisdiv role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+
+
+
+enum                <link linkend="DBusGError">DBusGError</link>;
+<link linkend="gboolean">gboolean</link>            <link linkend="dbus-g-error-has-name">dbus_g_error_has_name</link>               (<link linkend="GError">GError</link> *error,
+                                                         const <link linkend="char">char</link> *name);
+const <link linkend="char">char</link>*         <link linkend="dbus-g-error-get-name">dbus_g_error_get_name</link>               (<link linkend="GError">GError</link> *error);
+<link linkend="GQuark">GQuark</link>              <link linkend="dbus-g-error-quark">dbus_g_error_quark</link>                  (void);
+<link linkend="void">void</link>                <link linkend="dbus-g-error-domain-register">dbus_g_error_domain_register</link>        (<link linkend="GQuark">GQuark</link> domain,
+                                                         const <link linkend="char">char</link> *default_iface,
+                                                         <link linkend="GType">GType</link> code_enum);
+
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 role="desc">
+<title role="desc.title">Description</title>
+<para>
+<link linkend="DBusGError"><type>DBusGError</type></link> is the <link linkend="GError"><type>GError</type></link> used by DBus.</para>
+<para>
+
+</para>
+</refsect1>
+
+<refsect1 role="details">
+<title role="details.title">Details</title>
+<refsect2>
+<title><anchor id="DBusGError" role="enum"/>enum DBusGError</title>
+<indexterm><primary>DBusGError</primary></indexterm><programlisting>typedef enum
+{
+DBUS_GERROR_FAILED,
+DBUS_GERROR_NO_MEMORY,
+DBUS_GERROR_SERVICE_UNKNOWN,
+DBUS_GERROR_NAME_HAS_NO_OWNER,
+DBUS_GERROR_NO_REPLY,
+DBUS_GERROR_IO_ERROR,
+DBUS_GERROR_BAD_ADDRESS,
+DBUS_GERROR_NOT_SUPPORTED,
+DBUS_GERROR_LIMITS_EXCEEDED,
+DBUS_GERROR_ACCESS_DENIED,
+DBUS_GERROR_AUTH_FAILED,
+DBUS_GERROR_NO_SERVER,
+DBUS_GERROR_TIMEOUT,
+DBUS_GERROR_NO_NETWORK,
+DBUS_GERROR_ADDRESS_IN_USE,
+DBUS_GERROR_DISCONNECTED,
+DBUS_GERROR_INVALID_ARGS,
+DBUS_GERROR_FILE_NOT_FOUND,
+DBUS_GERROR_FILE_EXISTS,
+DBUS_GERROR_UNKNOWN_METHOD,
+DBUS_GERROR_TIMED_OUT,
+DBUS_GERROR_MATCH_RULE_NOT_FOUND,
+DBUS_GERROR_MATCH_RULE_INVALID,
+DBUS_GERROR_SPAWN_EXEC_FAILED,
+DBUS_GERROR_SPAWN_FORK_FAILED,
+DBUS_GERROR_SPAWN_CHILD_EXITED,
+DBUS_GERROR_SPAWN_CHILD_SIGNALED,
+DBUS_GERROR_SPAWN_FAILED,
+DBUS_GERROR_UNIX_PROCESS_ID_UNKNOWN,
+DBUS_GERROR_INVALID_SIGNATURE,
+DBUS_GERROR_INVALID_FILE_CONTENT,
+DBUS_GERROR_SELINUX_SECURITY_CONTEXT_UNKNOWN,
+DBUS_GERROR_REMOTE_EXCEPTION
+} DBusGError;
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-error-has-name" role="function"/>dbus_g_error_has_name ()</title>
+<indexterm><primary>dbus_g_error_has_name</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            dbus_g_error_has_name               (<link linkend="GError">GError</link> *error,
+                                                         const <link linkend="char">char</link> *name);</programlisting>
+<para>
+Determine whether D-BUS error name for a remote exception matches
+the given name.  This function is intended to be invoked on a
+GError returned from an invocation of a remote method, e.g. via
+dbus_g_proxy_end_call.  It will silently return FALSE for errors
+which are not remote D-BUS exceptions (i.e. with a domain other
+than DBUS_GERROR or a code other than
+DBUS_GERROR_REMOTE_EXCEPTION).</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>error</parameter>&nbsp;:</term>
+<listitem><simpara> the GError given from the remote method
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>name</parameter>&nbsp;:</term>
+<listitem><simpara> the D-BUS error name
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> TRUE iff the remote error has the given name
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-error-get-name" role="function"/>dbus_g_error_get_name ()</title>
+<indexterm><primary>dbus_g_error_get_name</primary></indexterm><programlisting>const <link linkend="char">char</link>*         dbus_g_error_get_name               (<link linkend="GError">GError</link> *error);</programlisting>
+<para>
+This function may only be invoked on a <link linkend="GError"><type>GError</type></link> returned from an
+invocation of a remote method, e.g. via dbus_g_proxy_end_call.
+Moreover, you must ensure that the error's domain is <link linkend="DBUS-GERROR:CAPS"><type>DBUS_GERROR</type></link>,
+and the code is <link linkend="DBUS-GERROR-REMOTE-EXCEPTION:CAPS"><type>DBUS_GERROR_REMOTE_EXCEPTION</type></link>.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>error</parameter>&nbsp;:</term>
+<listitem><simpara> the <link linkend="GError"><type>GError</type></link> given from the remote method
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the D-BUS name for a remote exception.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-error-quark" role="function"/>dbus_g_error_quark ()</title>
+<indexterm><primary>dbus_g_error_quark</primary></indexterm><programlisting><link linkend="GQuark">GQuark</link>              dbus_g_error_quark                  (void);</programlisting>
+<para>
+The implementation of <link linkend="DBUS-GERROR:CAPS"><type>DBUS_GERROR</type></link> error domain. See documentation
+for <link linkend="GError"><type>GError</type></link> in GLib reference manual.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the error domain quark for use with <link linkend="GError"><type>GError</type></link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-error-domain-register" role="function"/>dbus_g_error_domain_register ()</title>
+<indexterm><primary>dbus_g_error_domain_register</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_error_domain_register        (<link linkend="GQuark">GQuark</link> domain,
+                                                         const <link linkend="char">char</link> *default_iface,
+                                                         <link linkend="GType">GType</link> code_enum);</programlisting>
+<para>
+Register a <link linkend="GError"><type>GError</type></link> domain and set of codes with D-BUS.  You must
+have created a GEnum for the error codes.  This function will not
+be needed with an introspection-capable GLib.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>domain</parameter>&nbsp;:</term>
+<listitem><simpara> the <link linkend="GError"><type>GError</type></link> domain 
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>default_iface</parameter>&nbsp;:</term>
+<listitem><simpara> the D-BUS interface used for error values by default, or <link linkend="NULL:CAPS"><type>NULL</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>code_enum</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GType"><type>GType</type></link> for a <link linkend="GEnum"><type>GEnum</type></link> of the error codes
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+<refsect1>
+<title>See Also</title>
+<link linkend="GError"><type>GError</type></link>
+</refsect1>
+
+
+<refsect1><refsect2 /><refsect2 /></refsect1>
+</refentry>

@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>DBusGMessage</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="D-Bus GLib bindings - Reference Manual">
+<link rel="up" href="ch02.html" title="API Reference">
+<link rel="prev" href="dbus-glib-DBus-GObject-related-functions.html" title="DBus GObject related functions">
+<link rel="next" href="dbus-glib-DBusGMethod.html" title="DBusGMethod">
+<meta name="generator" content="GTK-Doc V1.9 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="ch01.html" title="Introduction">
+<link rel="chapter" href="ch02.html" title="API Reference">
+<link rel="chapter" href="ch03.html" title="Tools Reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="dbus-glib-DBus-GObject-related-functions.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="ch02.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">D-Bus GLib bindings - Reference Manual</th>
+<td><a accesskey="n" href="dbus-glib-DBusGMethod.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts"><nobr><a href="#id328063" class="shortcut">Top</a>
+                  &#160;|&#160;
+                  <a href="#id333948" class="shortcut">Description</a></nobr></td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="dbus-glib-DBusGMessage"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2>
+<a name="id328063"></a><span class="refentrytitle">DBusGMessage</span>
+</h2>
+<p>DBusGMessage &#8212; DBus Message</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" lang="en">
+<a name="id347733"></a><h2>Stability Level</h2>
+Stable, unless otherwise indicated
+</div>
+<div class="refsynopsisdiv">
+<h2>Synopsis</h2>
+<pre class="synopsis">
+
+
+
+                    <a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage">DBusGMessage</a>;
+<a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage">DBusGMessage</a>*       <a class="link" href="dbus-glib-DBusGMessage.html#dbus-g-message-ref">dbus_g_message_ref</a>                  (<a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage">DBusGMessage</a> *message);
+void                <a class="link" href="dbus-glib-DBusGMessage.html#dbus-g-message-unref">dbus_g_message_unref</a>                (<a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage">DBusGMessage</a> *message);
+DBusMessage*        <a class="link" href="dbus-glib-DBusGMessage.html#dbus-g-message-get-message">dbus_g_message_get_message</a>          (<a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage">DBusGMessage</a> *gmessage);
+
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="id333948"></a><h2>Description</h2>
+<p>
+A <a class="link" href="dbus-glib-DBusGConnection.html#DBusGConnection"><span class="type">DBusGConnection</span></a> is a boxed type abstracting a DBusMessage.</p>
+<p>
+
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="id333975"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="id333985"></a><h3>
+<a name="DBusGMessage"></a>DBusGMessage</h3>
+<a class="indexterm" name="id333997"></a><pre class="programlisting">typedef struct _DBusGMessage DBusGMessage;</pre>
+<p>
+
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id357034"></a><h3>
+<a name="dbus-g-message-ref"></a>dbus_g_message_ref ()</h3>
+<a class="indexterm" name="id357046"></a><pre class="programlisting"><a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage">DBusGMessage</a>*       dbus_g_message_ref                  (<a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage">DBusGMessage</a> *message);</pre>
+<p>
+Increment refcount on a <a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage"><span class="type">DBusGMessage</span></a></p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em>&#160;:</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></p></td>
+<td> the message that was ref'd
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id323119"></a><h3>
+<a name="dbus-g-message-unref"></a>dbus_g_message_unref ()</h3>
+<a class="indexterm" name="id323131"></a><pre class="programlisting">void                dbus_g_message_unref                (<a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage">DBusGMessage</a> *message);</pre>
+<p>
+Decrement refcount on a <a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage"><span class="type">DBusGMessage</span></a></p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>message</code></em>&#160;:</span></p></td>
+<td>
+
+
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id323185"></a><h3>
+<a name="dbus-g-message-get-message"></a>dbus_g_message_get_message ()</h3>
+<a class="indexterm" name="id323198"></a><pre class="programlisting">DBusMessage*        dbus_g_message_get_message          (<a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage">DBusGMessage</a> *gmessage);</pre>
+<p>
+Get the <span class="type">DBusMessage</span> corresponding to this <a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage"><span class="type">DBusGMessage</span></a>.
+The return value does not have its refcount incremented.</p>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>gmessage</code></em>&#160;:</span></p></td>
+<td> a <a class="link" href="dbus-glib-DBusGMessage.html#DBusGMessage"><span class="type">DBusGMessage</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span>&#160;:</span></p></td>
+<td> <span class="type">DBusMessage</span> 
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="id337515"></a><h2>See Also</h2>
+<span class="type">DBusMessage</span>
+</div>
+<div class="refsect1" lang="en">
+<a name="id337530"></a><div class="refsect2" lang="en"><a name="id337531"></a></div>
+<hr>
+<div class="refsect2" lang="en"><a name="id337532"></a></div>
+</div>
+</div>
+</body>
+</html>

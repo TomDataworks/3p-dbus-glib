@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY dbus-binding-tool SYSTEM "dbus-binding-tool.xml">
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="dbus-glib-DBus-GLib-low-level">
+<refmeta>
+<refentrytitle role="top_of_page">DBus GLib low level</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>DBUS-GLIB Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>DBus GLib low level</refname>
+<refpurpose>DBus lower level functions</refpurpose>
+<!--[<xref linkend="desc" endterm="desc.title"/>]-->
+</refnamediv>
+<refsect1>
+<title>Stability Level</title>
+Unstable, unless otherwise indicated
+</refsect1>
+
+<refsynopsisdiv role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+
+
+
+<link linkend="void">void</link>                <link linkend="dbus-set-g-error">dbus_set_g_error</link>                    (<link linkend="GError">GError</link> **gerror,
+                                                         <link linkend="DBusError">DBusError</link> *derror);
+<link linkend="void">void</link>                <link linkend="dbus-connection-setup-with-g-main">dbus_connection_setup_with_g_main</link>   (<link linkend="DBusConnection">DBusConnection</link> *connection,
+                                                         <link linkend="GMainContext">GMainContext</link> *context);
+<link linkend="void">void</link>                <link linkend="dbus-server-setup-with-g-main">dbus_server_setup_with_g_main</link>       (<link linkend="DBusServer">DBusServer</link> *server,
+                                                         <link linkend="GMainContext">GMainContext</link> *context);
+
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 role="desc">
+<title role="desc.title">Description</title>
+<para>
+These functions can be used to access lower level of DBus.</para>
+<para>
+
+</para>
+</refsect1>
+
+<refsect1 role="details">
+<title role="details.title">Details</title>
+<refsect2>
+<title><anchor id="dbus-set-g-error" role="function"/>dbus_set_g_error ()</title>
+<indexterm><primary>dbus_set_g_error</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_set_g_error                    (<link linkend="GError">GError</link> **gerror,
+                                                         <link linkend="DBusError">DBusError</link> *derror);</programlisting>
+<para>
+Store the information from a DBus method error return into a
+GError.  For the normal case of an arbitrary remote process,
+the error code will be DBUS_GERROR_REMOTE_EXCEPTION.  Now,
+DBus errors have two components; a message and a "name". 
+The former is an arbitrary (normally American English) string.  
+The second is a string like com.example.FooFailure which 
+programs can use as a conditional source.  Because a GError
+only has one string, we use a hack to encode both values:
+</para>
+<para>
+<human readable string><null><error name><null>
+</para>
+<para>
+You can use the following code to retrieve both values:
+</para>
+<para>
+const char *msg = error->message;
+size_t len = strlen(msg);
+const char *error_name = msg+len+1;</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>gerror</parameter>&nbsp;:</term>
+<listitem><simpara> an error
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>derror</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-connection-setup-with-g-main" role="function"/>dbus_connection_setup_with_g_main ()</title>
+<indexterm><primary>dbus_connection_setup_with_g_main</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_connection_setup_with_g_main   (<link linkend="DBusConnection">DBusConnection</link> *connection,
+                                                         <link linkend="GMainContext">GMainContext</link> *context);</programlisting>
+<para>
+Sets the watch and timeout functions of a <link linkend="DBusConnection"><type>DBusConnection</type></link>
+to integrate the connection with the GLib main loop.
+Pass in <link linkend="NULL:CAPS"><type>NULL</type></link> for the <link linkend="GMainContext"><type>GMainContext</type></link> unless you're
+doing something specialized.
+</para>
+<para>
+If called twice for the same context, does nothing the second
+time. If called once with context A and once with context B,
+context B replaces context A as the context monitoring the
+connection.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>connection</parameter>&nbsp;:</term>
+<listitem><simpara> the connection
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>context</parameter>&nbsp;:</term>
+<listitem><simpara> the <link linkend="GMainContext"><type>GMainContext</type></link> or <link linkend="NULL:CAPS"><type>NULL</type></link> for default context
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-server-setup-with-g-main" role="function"/>dbus_server_setup_with_g_main ()</title>
+<indexterm><primary>dbus_server_setup_with_g_main</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_server_setup_with_g_main       (<link linkend="DBusServer">DBusServer</link> *server,
+                                                         <link linkend="GMainContext">GMainContext</link> *context);</programlisting>
+<para>
+Sets the watch and timeout functions of a <link linkend="DBusServer"><type>DBusServer</type></link>
+to integrate the server with the GLib main loop.
+In most cases the context argument should be <link linkend="NULL:CAPS"><type>NULL</type></link>.
+</para>
+<para>
+If called twice for the same context, does nothing the second
+time. If called once with context A and once with context B,
+context B replaces context A as the context monitoring the
+connection.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>server</parameter>&nbsp;:</term>
+<listitem><simpara> the server
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>context</parameter>&nbsp;:</term>
+<listitem><simpara> the <link linkend="GMainContext"><type>GMainContext</type></link> or <link linkend="NULL:CAPS"><type>NULL</type></link> for default
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+
+<refsect1><refsect2 /><refsect2 /></refsect1>
+</refentry>

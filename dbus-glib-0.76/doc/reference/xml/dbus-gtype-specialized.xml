@@ -1,0 +1,1107 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY dbus-binding-tool SYSTEM "dbus-binding-tool.xml">
+<!ENTITY version SYSTEM "version.xml">
+]>
+<refentry id="dbus-glib-Specializable-GType-System">
+<refmeta>
+<refentrytitle role="top_of_page">Specializable GType System</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>DBUS-GLIB Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>Specializable GType System</refname>
+<refpurpose>Specialized GTypes</refpurpose>
+<!--[<xref linkend="desc" endterm="desc.title"/>]-->
+</refnamediv>
+<refsect1>
+<title>Stability Level</title>
+Unstable, unless otherwise indicated
+</refsect1>
+
+<refsynopsisdiv role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+
+
+
+<link linkend="void">void</link>                (<link linkend="DBusGTypeSpecializedCollectionIterator">*DBusGTypeSpecializedCollectionIterator</link>)
+                                                        (const <link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="gpointer">gpointer</link> user_data);
+<link linkend="void">void</link>                (<link linkend="DBusGTypeSpecializedMapIterator">*DBusGTypeSpecializedMapIterator</link>)  (const <link linkend="GValue">GValue</link> *key_val,
+                                                         const <link linkend="GValue">GValue</link> *value_val,
+                                                         <link linkend="gpointer">gpointer</link> user_data);
+                    <link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link>;
+<link linkend="gpointer">gpointer</link>            (<link linkend="DBusGTypeSpecializedConstructor">*DBusGTypeSpecializedConstructor</link>)  (<link linkend="GType">GType</link> type);
+<link linkend="void">void</link>                (<link linkend="DBusGTypeSpecializedFreeFunc">*DBusGTypeSpecializedFreeFunc</link>)     (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> val);
+<link linkend="gpointer">gpointer</link>            (<link linkend="DBusGTypeSpecializedCopyFunc">*DBusGTypeSpecializedCopyFunc</link>)     (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> src);
+                    <link linkend="DBusGTypeSpecializedVtable">DBusGTypeSpecializedVtable</link>;
+<link linkend="gboolean">gboolean</link>            (<link linkend="DBusGTypeSpecializedCollectionFixedAccessorFunc">*DBusGTypeSpecializedCollectionFixedAccessorFunc</link>)
+                                                        (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> instance,
+                                                         <link linkend="gpointer">gpointer</link> *values,
+                                                         <link linkend="guint">guint</link> *len);
+<link linkend="void">void</link>                (<link linkend="DBusGTypeSpecializedCollectionIteratorFunc">*DBusGTypeSpecializedCollectionIteratorFunc</link>)
+                                                        (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> instance,
+                                                         <link linkend="DBusGTypeSpecializedCollectionIterator">DBusGTypeSpecializedCollectionIterator</link> iterator,
+                                                         <link linkend="gpointer">gpointer</link> user_data);
+<link linkend="void">void</link>                (<link linkend="DBusGTypeSpecializedCollectionAppendFunc">*DBusGTypeSpecializedCollectionAppendFunc</link>)
+                                                        (<link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx,
+                                                         <link linkend="GValue">GValue</link> *val);
+<link linkend="void">void</link>                (<link linkend="DBusGTypeSpecializedCollectionEndAppendFunc">*DBusGTypeSpecializedCollectionEndAppendFunc</link>)
+                                                        (<link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx);
+                    <link linkend="DBusGTypeSpecializedCollectionVtable">DBusGTypeSpecializedCollectionVtable</link>;
+<link linkend="void">void</link>                (<link linkend="DBusGTypeSpecializedMapIteratorFunc">*DBusGTypeSpecializedMapIteratorFunc</link>)
+                                                        (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> instance,
+                                                         <link linkend="DBusGTypeSpecializedMapIterator">DBusGTypeSpecializedMapIterator</link> iterator,
+                                                         <link linkend="gpointer">gpointer</link> user_data);
+<link linkend="void">void</link>                (<link linkend="DBusGTypeSpecializedMapAppendFunc">*DBusGTypeSpecializedMapAppendFunc</link>)
+                                                        (<link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx,
+                                                         <link linkend="GValue">GValue</link> *key,
+                                                         <link linkend="GValue">GValue</link> *val);
+                    <link linkend="DBusGTypeSpecializedMapVtable">DBusGTypeSpecializedMapVtable</link>;
+<link linkend="gboolean">gboolean</link>            (<link linkend="DBusGTypeSpecializedStructGetMember">*DBusGTypeSpecializedStructGetMember</link>)
+                                                        (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> instance,
+                                                         <link linkend="guint">guint</link> member,
+                                                         <link linkend="GValue">GValue</link> *ret_value);
+<link linkend="gboolean">gboolean</link>            (<link linkend="DBusGTypeSpecializedStructSetMember">*DBusGTypeSpecializedStructSetMember</link>)
+                                                        (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> instance,
+                                                         <link linkend="guint">guint</link> member,
+                                                         const <link linkend="GValue">GValue</link> *new_value);
+                    <link linkend="DBusGTypeSpecializedStructVtable">DBusGTypeSpecializedStructVtable</link>;
+<link linkend="GType">GType</link>               <link linkend="dbus-g-type-get-collection">dbus_g_type_get_collection</link>          (const <link linkend="char">char</link> *container,
+                                                         <link linkend="GType">GType</link> specialization);
+<link linkend="GType">GType</link>               <link linkend="dbus-g-type-get-map">dbus_g_type_get_map</link>                 (const <link linkend="char">char</link> *container,
+                                                         <link linkend="GType">GType</link> key_specialization,
+                                                         <link linkend="GType">GType</link> value_specialization);
+<link linkend="GType">GType</link>               <link linkend="dbus-g-type-get-structv">dbus_g_type_get_structv</link>             (const <link linkend="char">char</link> *container,
+                                                         <link linkend="guint">guint</link> num_members,
+                                                         <link linkend="GType">GType</link> *types);
+<link linkend="GType">GType</link>               <link linkend="dbus-g-type-get-struct">dbus_g_type_get_struct</link>              (const <link linkend="char">char</link> *container,
+                                                         <link linkend="GType">GType</link> first_type,
+                                                         ...);
+<link linkend="gboolean">gboolean</link>            <link linkend="dbus-g-type-is-collection">dbus_g_type_is_collection</link>           (<link linkend="GType">GType</link> gtype);
+<link linkend="gboolean">gboolean</link>            <link linkend="dbus-g-type-is-map">dbus_g_type_is_map</link>                  (<link linkend="GType">GType</link> gtype);
+<link linkend="gboolean">gboolean</link>            <link linkend="dbus-g-type-is-struct">dbus_g_type_is_struct</link>               (<link linkend="GType">GType</link> gtype);
+<link linkend="GType">GType</link>               <link linkend="dbus-g-type-get-collection-specialization">dbus_g_type_get_collection_specialization</link>
+                                                        (<link linkend="GType">GType</link> gtype);
+<link linkend="GType">GType</link>               <link linkend="dbus-g-type-get-map-key-specialization">dbus_g_type_get_map_key_specialization</link>
+                                                        (<link linkend="GType">GType</link> gtype);
+<link linkend="GType">GType</link>               <link linkend="dbus-g-type-get-map-value-specialization">dbus_g_type_get_map_value_specialization</link>
+                                                        (<link linkend="GType">GType</link> gtype);
+<link linkend="GType">GType</link>               <link linkend="dbus-g-type-get-struct-member-type">dbus_g_type_get_struct_member_type</link>  (<link linkend="GType">GType</link> gtype,
+                                                         <link linkend="guint">guint</link> member);
+<link linkend="guint">guint</link>               <link linkend="dbus-g-type-get-struct-size">dbus_g_type_get_struct_size</link>         (<link linkend="GType">GType</link> gtype);
+<link linkend="gpointer">gpointer</link>            <link linkend="dbus-g-type-specialized-construct">dbus_g_type_specialized_construct</link>   (<link linkend="GType">GType</link> gtype);
+<link linkend="void">void</link>                <link linkend="dbus-g-type-specialized-init-append">dbus_g_type_specialized_init_append</link> (<link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx);
+<link linkend="void">void</link>                <link linkend="dbus-g-type-specialized-collection-append">dbus_g_type_specialized_collection_append</link>
+                                                        (<link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx,
+                                                         <link linkend="GValue">GValue</link> *elt);
+<link linkend="void">void</link>                <link linkend="dbus-g-type-specialized-collection-end-append">dbus_g_type_specialized_collection_end_append</link>
+                                                        (<link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx);
+<link linkend="void">void</link>                <link linkend="dbus-g-type-specialized-map-append">dbus_g_type_specialized_map_append</link>  (<link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx,
+                                                         <link linkend="GValue">GValue</link> *key,
+                                                         <link linkend="GValue">GValue</link> *val);
+<link linkend="gboolean">gboolean</link>            <link linkend="dbus-g-type-collection-get-fixed">dbus_g_type_collection_get_fixed</link>    (<link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="gpointer">gpointer</link> *data,
+                                                         <link linkend="guint">guint</link> *len);
+<link linkend="void">void</link>                <link linkend="dbus-g-type-collection-value-iterate">dbus_g_type_collection_value_iterate</link>
+                                                        (const <link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="DBusGTypeSpecializedCollectionIterator">DBusGTypeSpecializedCollectionIterator</link> iterator,
+                                                         <link linkend="gpointer">gpointer</link> user_data);
+<link linkend="void">void</link>                <link linkend="dbus-g-type-map-value-iterate">dbus_g_type_map_value_iterate</link>       (const <link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="DBusGTypeSpecializedMapIterator">DBusGTypeSpecializedMapIterator</link> iterator,
+                                                         <link linkend="gpointer">gpointer</link> user_data);
+<link linkend="gboolean">gboolean</link>            <link linkend="dbus-g-type-struct-get-member">dbus_g_type_struct_get_member</link>       (const <link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="guint">guint</link> member,
+                                                         <link linkend="GValue">GValue</link> *dest);
+<link linkend="gboolean">gboolean</link>            <link linkend="dbus-g-type-struct-set-member">dbus_g_type_struct_set_member</link>       (<link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="guint">guint</link> member,
+                                                         const <link linkend="GValue">GValue</link> *src);
+<link linkend="gboolean">gboolean</link>            <link linkend="dbus-g-type-struct-get">dbus_g_type_struct_get</link>              (const <link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="guint">guint</link> member,
+                                                         ...);
+<link linkend="gboolean">gboolean</link>            <link linkend="dbus-g-type-struct-set">dbus_g_type_struct_set</link>              (<link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="guint">guint</link> member,
+                                                         ...);
+<link linkend="void">void</link>                <link linkend="dbus-g-type-specialized-init">dbus_g_type_specialized_init</link>        (void);
+<link linkend="void">void</link>                <link linkend="dbus-g-type-register-collection">dbus_g_type_register_collection</link>     (const <link linkend="char">char</link> *name,
+                                                         const <link linkend="DBusGTypeSpecializedCollectionVtable">DBusGTypeSpecializedCollectionVtable</link> *vtable,
+                                                         <link linkend="guint">guint</link> flags);
+<link linkend="void">void</link>                <link linkend="dbus-g-type-register-map">dbus_g_type_register_map</link>            (const <link linkend="char">char</link> *name,
+                                                         const <link linkend="DBusGTypeSpecializedMapVtable">DBusGTypeSpecializedMapVtable</link> *vtable,
+                                                         <link linkend="guint">guint</link> flags);
+const <link linkend="DBusGTypeSpecializedMapVtable">DBusGTypeSpecializedMapVtable</link>* <link linkend="dbus-g-type-map-peek-vtable">dbus_g_type_map_peek_vtable</link>
+                                                        (<link linkend="GType">GType</link> map_type);
+const <link linkend="DBusGTypeSpecializedCollectionVtable">DBusGTypeSpecializedCollectionVtable</link>* <link linkend="dbus-g-type-collection-peek-vtable">dbus_g_type_collection_peek_vtable</link>
+                                                        (<link linkend="GType">GType</link> collection_type);
+<link linkend="void">void</link>                <link linkend="dbus-g-type-register-struct">dbus_g_type_register_struct</link>         (const <link linkend="char">char</link> *name,
+                                                         const <link linkend="DBusGTypeSpecializedStructVtable">DBusGTypeSpecializedStructVtable</link> *vtable,
+                                                         <link linkend="guint">guint</link> flags);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 role="desc">
+<title role="desc.title">Description</title>
+<para>
+Specialized gtypes are basically a way to allow the definition of
+recursive GTypes. It allows the definition of 'containers' which is
+basically a user defined structure capabale of holding other data and a 
+set of functions defining how to access that structure. Containers come in
+3 flavors: collections, maps and structs. 
+</para>
+<para>
+A collection is a container that holds an ordered set of items, all
+of which must be the same type. 
+</para>
+<para>
+A map is a container that holds a set of key/value pairs. 
+The keys have one type, and the values another.
+</para>
+<para>
+A struct is a container that holds a fixed number of members, each member 
+having a predefined type.
+</para>
+<para>
+A specialization is a GType detailing a particular container with
+particular types (a type specialization).
+</para>
+<para>
+Functions are provided for constructing and manipulating specializations.
+</para>
+<para>
+This documentation needs splitting into two pages, one for defining new
+containers and using existing containers. I expect most users to only do
+the latter. I also need to add some examples.</para>
+<para>
+
+</para>
+</refsect1>
+
+<refsect1 role="details">
+<title role="details.title">Details</title>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedCollectionIterator" role="function"/>DBusGTypeSpecializedCollectionIterator ()</title>
+<indexterm><primary>DBusGTypeSpecializedCollectionIterator</primary></indexterm><programlisting><link linkend="void">void</link>                (*DBusGTypeSpecializedCollectionIterator)
+                                                        (const <link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="gpointer">gpointer</link> user_data);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>value</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedMapIterator" role="function"/>DBusGTypeSpecializedMapIterator ()</title>
+<indexterm><primary>DBusGTypeSpecializedMapIterator</primary></indexterm><programlisting><link linkend="void">void</link>                (*DBusGTypeSpecializedMapIterator)  (const <link linkend="GValue">GValue</link> *key_val,
+                                                         const <link linkend="GValue">GValue</link> *value_val,
+                                                         <link linkend="gpointer">gpointer</link> user_data);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>key_val</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>value_val</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedAppendContext" role="struct"/>DBusGTypeSpecializedAppendContext</title>
+<indexterm><primary>DBusGTypeSpecializedAppendContext</primary></indexterm><programlisting>typedef struct {
+  /* public */
+  GValue *val;
+  GType specialization_type;
+  /* padding */
+  gpointer b;
+  guint c;
+  gpointer d;
+} DBusGTypeSpecializedAppendContext;
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedConstructor" role="function"/>DBusGTypeSpecializedConstructor ()</title>
+<indexterm><primary>DBusGTypeSpecializedConstructor</primary></indexterm><programlisting><link linkend="gpointer">gpointer</link>            (*DBusGTypeSpecializedConstructor)  (<link linkend="GType">GType</link> type);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedFreeFunc" role="function"/>DBusGTypeSpecializedFreeFunc ()</title>
+<indexterm><primary>DBusGTypeSpecializedFreeFunc</primary></indexterm><programlisting><link linkend="void">void</link>                (*DBusGTypeSpecializedFreeFunc)     (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> val);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>val</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedCopyFunc" role="function"/>DBusGTypeSpecializedCopyFunc ()</title>
+<indexterm><primary>DBusGTypeSpecializedCopyFunc</primary></indexterm><programlisting><link linkend="gpointer">gpointer</link>            (*DBusGTypeSpecializedCopyFunc)     (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> src);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>src</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedVtable" role="struct"/>DBusGTypeSpecializedVtable</title>
+<indexterm><primary>DBusGTypeSpecializedVtable</primary></indexterm><programlisting>typedef struct {
+  DBusGTypeSpecializedConstructor    constructor;
+  DBusGTypeSpecializedFreeFunc       free_func;
+  DBusGTypeSpecializedCopyFunc       copy_func;
+  GDestroyNotify                     simple_free_func; /* for type-independent freeing if possible */
+  gpointer                           padding2;
+  gpointer                           padding3;
+} DBusGTypeSpecializedVtable;
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedCollectionFixedAccessorFunc" role="function"/>DBusGTypeSpecializedCollectionFixedAccessorFunc ()</title>
+<indexterm><primary>DBusGTypeSpecializedCollectionFixedAccessorFunc</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            (*DBusGTypeSpecializedCollectionFixedAccessorFunc)
+                                                        (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> instance,
+                                                         <link linkend="gpointer">gpointer</link> *values,
+                                                         <link linkend="guint">guint</link> *len);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>instance</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>values</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>len</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedCollectionIteratorFunc" role="function"/>DBusGTypeSpecializedCollectionIteratorFunc ()</title>
+<indexterm><primary>DBusGTypeSpecializedCollectionIteratorFunc</primary></indexterm><programlisting><link linkend="void">void</link>                (*DBusGTypeSpecializedCollectionIteratorFunc)
+                                                        (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> instance,
+                                                         <link linkend="DBusGTypeSpecializedCollectionIterator">DBusGTypeSpecializedCollectionIterator</link> iterator,
+                                                         <link linkend="gpointer">gpointer</link> user_data);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>instance</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>iterator</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedCollectionAppendFunc" role="function"/>DBusGTypeSpecializedCollectionAppendFunc ()</title>
+<indexterm><primary>DBusGTypeSpecializedCollectionAppendFunc</primary></indexterm><programlisting><link linkend="void">void</link>                (*DBusGTypeSpecializedCollectionAppendFunc)
+                                                        (<link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx,
+                                                         <link linkend="GValue">GValue</link> *val);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>ctx</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>val</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedCollectionEndAppendFunc" role="function"/>DBusGTypeSpecializedCollectionEndAppendFunc ()</title>
+<indexterm><primary>DBusGTypeSpecializedCollectionEndAppendFunc</primary></indexterm><programlisting><link linkend="void">void</link>                (*DBusGTypeSpecializedCollectionEndAppendFunc)
+                                                        (<link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>ctx</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedCollectionVtable" role="struct"/>DBusGTypeSpecializedCollectionVtable</title>
+<indexterm><primary>DBusGTypeSpecializedCollectionVtable</primary></indexterm><programlisting>typedef struct {
+  DBusGTypeSpecializedVtable                        base_vtable;
+  DBusGTypeSpecializedCollectionFixedAccessorFunc   fixed_accessor;
+  DBusGTypeSpecializedCollectionIteratorFunc        iterator;
+  DBusGTypeSpecializedCollectionAppendFunc          append_func;
+  DBusGTypeSpecializedCollectionEndAppendFunc       end_append_func;
+} DBusGTypeSpecializedCollectionVtable;
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedMapIteratorFunc" role="function"/>DBusGTypeSpecializedMapIteratorFunc ()</title>
+<indexterm><primary>DBusGTypeSpecializedMapIteratorFunc</primary></indexterm><programlisting><link linkend="void">void</link>                (*DBusGTypeSpecializedMapIteratorFunc)
+                                                        (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> instance,
+                                                         <link linkend="DBusGTypeSpecializedMapIterator">DBusGTypeSpecializedMapIterator</link> iterator,
+                                                         <link linkend="gpointer">gpointer</link> user_data);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>instance</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>iterator</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedMapAppendFunc" role="function"/>DBusGTypeSpecializedMapAppendFunc ()</title>
+<indexterm><primary>DBusGTypeSpecializedMapAppendFunc</primary></indexterm><programlisting><link linkend="void">void</link>                (*DBusGTypeSpecializedMapAppendFunc)
+                                                        (<link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx,
+                                                         <link linkend="GValue">GValue</link> *key,
+                                                         <link linkend="GValue">GValue</link> *val);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>ctx</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>key</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>val</parameter>&nbsp;:</term>
+<listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedMapVtable" role="struct"/>DBusGTypeSpecializedMapVtable</title>
+<indexterm><primary>DBusGTypeSpecializedMapVtable</primary></indexterm><programlisting>typedef struct {
+  DBusGTypeSpecializedVtable                        base_vtable;
+  DBusGTypeSpecializedMapIteratorFunc               iterator;
+  DBusGTypeSpecializedMapAppendFunc                 append_func;
+} DBusGTypeSpecializedMapVtable;
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedStructGetMember" role="function"/>DBusGTypeSpecializedStructGetMember ()</title>
+<indexterm><primary>DBusGTypeSpecializedStructGetMember</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            (*DBusGTypeSpecializedStructGetMember)
+                                                        (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> instance,
+                                                         <link linkend="guint">guint</link> member,
+                                                         <link linkend="GValue">GValue</link> *ret_value);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>instance</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>member</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>ret_value</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedStructSetMember" role="function"/>DBusGTypeSpecializedStructSetMember ()</title>
+<indexterm><primary>DBusGTypeSpecializedStructSetMember</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            (*DBusGTypeSpecializedStructSetMember)
+                                                        (<link linkend="GType">GType</link> type,
+                                                         <link linkend="gpointer">gpointer</link> instance,
+                                                         <link linkend="guint">guint</link> member,
+                                                         const <link linkend="GValue">GValue</link> *new_value);</programlisting>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>type</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>instance</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>member</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>new_value</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="DBusGTypeSpecializedStructVtable" role="struct"/>DBusGTypeSpecializedStructVtable</title>
+<indexterm><primary>DBusGTypeSpecializedStructVtable</primary></indexterm><programlisting>typedef struct {
+  DBusGTypeSpecializedVtable                        base_vtable;
+  DBusGTypeSpecializedStructGetMember               get_member;
+  DBusGTypeSpecializedStructSetMember               set_member;
+} DBusGTypeSpecializedStructVtable;
+</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-get-collection" role="function"/>dbus_g_type_get_collection ()</title>
+<indexterm><primary>dbus_g_type_get_collection</primary></indexterm><programlisting><link linkend="GType">GType</link>               dbus_g_type_get_collection          (const <link linkend="char">char</link> *container,
+                                                         <link linkend="GType">GType</link> specialization);</programlisting>
+<para>
+Gets a <link linkend="GType"><type>GType</type></link> for a particular collection instance, 
+creating the type if not already created.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>container</parameter>&nbsp;:</term>
+<listitem><simpara> a string specifying a registered collection type
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>specialization</parameter>&nbsp;:</term>
+<listitem><simpara> <link linkend="GType"><type>GType</type></link> of collection elements
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the <link linkend="GType"><type>GType</type></link> of that instance
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-get-map" role="function"/>dbus_g_type_get_map ()</title>
+<indexterm><primary>dbus_g_type_get_map</primary></indexterm><programlisting><link linkend="GType">GType</link>               dbus_g_type_get_map                 (const <link linkend="char">char</link> *container,
+                                                         <link linkend="GType">GType</link> key_specialization,
+                                                         <link linkend="GType">GType</link> value_specialization);</programlisting>
+<para>
+Gets a <link linkend="GType"><type>GType</type></link> for a particular map instance,
+creating the type if not already created.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>container</parameter>&nbsp;:</term>
+<listitem><simpara> a string specifying a registered map type
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>key_specialization</parameter>&nbsp;:</term>
+<listitem><simpara> <link linkend="GType"><type>GType</type></link> of keys
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>value_specialization</parameter>&nbsp;:</term>
+<listitem><simpara> <link linkend="GType"><type>GType</type></link> of values
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the <link linkend="GType"><type>GType</type></link> of that instance
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-get-structv" role="function"/>dbus_g_type_get_structv ()</title>
+<indexterm><primary>dbus_g_type_get_structv</primary></indexterm><programlisting><link linkend="GType">GType</link>               dbus_g_type_get_structv             (const <link linkend="char">char</link> *container,
+                                                         <link linkend="guint">guint</link> num_members,
+                                                         <link linkend="GType">GType</link> *types);</programlisting>
+<para>
+Gets a <link linkend="GType"><type>GType</type></link> for a particular struct instance,
+creating the type if not already created.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>container</parameter>&nbsp;:</term>
+<listitem><simpara> a string specifying a registered struct type
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>num_members</parameter>&nbsp;:</term>
+<listitem><simpara> number of members in the struct
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>types</parameter>&nbsp;:</term>
+<listitem><simpara> an array specufying a GType for each struct element
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the <link linkend="GType"><type>GType</type></link> of that instance
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-get-struct" role="function"/>dbus_g_type_get_struct ()</title>
+<indexterm><primary>dbus_g_type_get_struct</primary></indexterm><programlisting><link linkend="GType">GType</link>               dbus_g_type_get_struct              (const <link linkend="char">char</link> *container,
+                                                         <link linkend="GType">GType</link> first_type,
+                                                         ...);</programlisting>
+<para>
+Varags methsod to get a <link linkend="GType"><type>GType</type></link> for a particular struct instance,
+creating the type if not already created.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>container</parameter>&nbsp;:</term>
+<listitem><simpara> a string specifying a registered struct type
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>first_type</parameter>&nbsp;:</term>
+<listitem><simpara> <link linkend="GType"><type>GType</type></link> for the struct's first member
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&nbsp;:</term>
+<listitem><simpara> more GTypes for the struct's members, terminated by G_TYPE_INVALID
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the <link linkend="GType"><type>GType</type></link> of that instance
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-is-collection" role="function"/>dbus_g_type_is_collection ()</title>
+<indexterm><primary>dbus_g_type_is_collection</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            dbus_g_type_is_collection           (<link linkend="GType">GType</link> gtype);</programlisting>
+<para>
+Tests if a given GType is a collection.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>gtype</parameter>&nbsp;:</term>
+<listitem><simpara> a GType to test
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> true if the given GType is a collection
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-is-map" role="function"/>dbus_g_type_is_map ()</title>
+<indexterm><primary>dbus_g_type_is_map</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            dbus_g_type_is_map                  (<link linkend="GType">GType</link> gtype);</programlisting>
+<para>
+Tests if a given GType is a map,
+i.e. it was created with <link linkend="dbus-g-type-get-map"><type>dbus_g_type_get_map</type></link>.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>gtype</parameter>&nbsp;:</term>
+<listitem><simpara> a GType to test
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> true if the given GType is a map
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-is-struct" role="function"/>dbus_g_type_is_struct ()</title>
+<indexterm><primary>dbus_g_type_is_struct</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            dbus_g_type_is_struct               (<link linkend="GType">GType</link> gtype);</programlisting>
+<para>
+Tests if a given GType is a struct,
+i.e. it was created with <link linkend="dbus-g-type-get-struct"><type>dbus_g_type_get_struct</type></link></para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>gtype</parameter>&nbsp;:</term>
+<listitem><simpara> a GType to test
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> true if the given GType is a struct
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-get-collection-specialization" role="function"/>dbus_g_type_get_collection_specialization ()</title>
+<indexterm><primary>dbus_g_type_get_collection_specialization</primary></indexterm><programlisting><link linkend="GType">GType</link>               dbus_g_type_get_collection_specialization
+                                                        (<link linkend="GType">GType</link> gtype);</programlisting>
+<para>
+</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>gtype</parameter>&nbsp;:</term>
+<listitem><simpara> a collection GType, as created by <link linkend="dbus-g-type-get-collection"><type>dbus_g_type_get_collection</type></link>.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the element type for a given collection GType.
+Returns G_TYPE_INVALID if not a collection GType
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-get-map-key-specialization" role="function"/>dbus_g_type_get_map_key_specialization ()</title>
+<indexterm><primary>dbus_g_type_get_map_key_specialization</primary></indexterm><programlisting><link linkend="GType">GType</link>               dbus_g_type_get_map_key_specialization
+                                                        (<link linkend="GType">GType</link> gtype);</programlisting>
+<para>
+</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>gtype</parameter>&nbsp;:</term>
+<listitem><simpara> a map GType, as created by <link linkend="dbus-g-type-get-map"><type>dbus_g_type_get_map</type></link>.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the key type for a given map GType.
+Returns G_TYPE_INVALID if not a map GType
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-get-map-value-specialization" role="function"/>dbus_g_type_get_map_value_specialization ()</title>
+<indexterm><primary>dbus_g_type_get_map_value_specialization</primary></indexterm><programlisting><link linkend="GType">GType</link>               dbus_g_type_get_map_value_specialization
+                                                        (<link linkend="GType">GType</link> gtype);</programlisting>
+<para>
+</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>gtype</parameter>&nbsp;:</term>
+<listitem><simpara> a map GType, as created by <link linkend="dbus-g-type-get-map"><type>dbus_g_type_get_map</type></link>.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the value type for a given map GType.
+Returns G_TYPE_INVALID if not a map GType
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-get-struct-member-type" role="function"/>dbus_g_type_get_struct_member_type ()</title>
+<indexterm><primary>dbus_g_type_get_struct_member_type</primary></indexterm><programlisting><link linkend="GType">GType</link>               dbus_g_type_get_struct_member_type  (<link linkend="GType">GType</link> gtype,
+                                                         <link linkend="guint">guint</link> member);</programlisting>
+<para>
+</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>gtype</parameter>&nbsp;:</term>
+<listitem><simpara> a struct GType, as created with <link linkend="dbus-g-type-get-struct"><type>dbus_g_type_get_struct</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>member</parameter>&nbsp;:</term>
+<listitem><simpara> the index of a struct member
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the type for a given member of a struct <link linkend="GType"><type>GType</type></link>.
+Returns G_TYPE_INVALID if not a struct GType
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-get-struct-size" role="function"/>dbus_g_type_get_struct_size ()</title>
+<indexterm><primary>dbus_g_type_get_struct_size</primary></indexterm><programlisting><link linkend="guint">guint</link>               dbus_g_type_get_struct_size         (<link linkend="GType">GType</link> gtype);</programlisting>
+<para>
+</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>gtype</parameter>&nbsp;:</term>
+<listitem><simpara> a struct GType, as created with <link linkend="dbus-g-type-get-struct"><type>dbus_g_type_get_struct</type></link>.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> the number of members in a given struct <link linkend="GType"><type>GType</type></link>.
+Returns G_TYPE_INVALID if not a struct GType
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-specialized-construct" role="function"/>dbus_g_type_specialized_construct ()</title>
+<indexterm><primary>dbus_g_type_specialized_construct</primary></indexterm><programlisting><link linkend="gpointer">gpointer</link>            dbus_g_type_specialized_construct   (<link linkend="GType">GType</link> gtype);</programlisting>
+<para>
+Create an instance of a given specialized type. 
+The structure created and returned will depend on the container type of the 
+GType. E.g. If the given type was created by 
+dbus_g_type_get_collection("GArray", G_TYPE_INT), 
+then this will return a GArray with element_size of sizeof(int)</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>gtype</parameter>&nbsp;:</term>
+<listitem><simpara> a specialized <link linkend="GType"><type>GType</type></link>, as created by <link linkend="dbus-g-type-get-collection"><type>dbus_g_type_get_collection</type></link>, <link linkend="dbus-g-type-get-map"><type>dbus_g_type_get_map</type></link> or <link linkend="dbus-g-type-get-struct"><type>dbus_g_type_get_struct</type></link>.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> a pointer to a newly constructed instance of the given type.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-specialized-init-append" role="function"/>dbus_g_type_specialized_init_append ()</title>
+<indexterm><primary>dbus_g_type_specialized_init_append</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_type_specialized_init_append (<link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx);</programlisting>
+<para>
+Create a new context for adding elements to a collection or key/value pairs 
+to a map. You generally don't need or want to use this..</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>value</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GValue"><type>GValue</type></link> containing an instance of specialized type
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>ctx</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="DBusGTypeSpecializedAppendContext"><type>DBusGTypeSpecializedAppendContext</type></link> in which to return a new appending context.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-specialized-collection-append" role="function"/>dbus_g_type_specialized_collection_append ()</title>
+<indexterm><primary>dbus_g_type_specialized_collection_append</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_type_specialized_collection_append
+                                                        (<link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx,
+                                                         <link linkend="GValue">GValue</link> *elt);</programlisting>
+<para>
+Appends a given element to the end of a collection.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>ctx</parameter>&nbsp;:</term>
+<listitem><simpara> a context created by <link linkend="dbus-g-type-specialized-init-append"><type>dbus_g_type_specialized_init_append</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>elt</parameter>&nbsp;:</term>
+<listitem><simpara> a GValue containing an element to append to the collection.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-specialized-collection-end-append" role="function"/>dbus_g_type_specialized_collection_end_append ()</title>
+<indexterm><primary>dbus_g_type_specialized_collection_end_append</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_type_specialized_collection_end_append
+                                                        (<link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx);</programlisting>
+<para>
+Finish appending elements to a given collection</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>ctx</parameter>&nbsp;:</term>
+<listitem><simpara> a context created by <link linkend="dbus-g-type-specialized-init-append"><type>dbus_g_type_specialized_init_append</type></link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-specialized-map-append" role="function"/>dbus_g_type_specialized_map_append ()</title>
+<indexterm><primary>dbus_g_type_specialized_map_append</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_type_specialized_map_append  (<link linkend="DBusGTypeSpecializedAppendContext">DBusGTypeSpecializedAppendContext</link> *ctx,
+                                                         <link linkend="GValue">GValue</link> *key,
+                                                         <link linkend="GValue">GValue</link> *val);</programlisting>
+<para>
+Inserts the given key/value pair into the map instance.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>ctx</parameter>&nbsp;:</term>
+<listitem><simpara> a context created by <link linkend="dbus-g-type-specialized-init-append"><type>dbus_g_type_specialized_init_append</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>key</parameter>&nbsp;:</term>
+<listitem><simpara> a GValue containing a key
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>val</parameter>&nbsp;:</term>
+<listitem><simpara> a GValue containing a value 
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-collection-get-fixed" role="function"/>dbus_g_type_collection_get_fixed ()</title>
+<indexterm><primary>dbus_g_type_collection_get_fixed</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            dbus_g_type_collection_get_fixed    (<link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="gpointer">gpointer</link> *data,
+                                                         <link linkend="guint">guint</link> *len);</programlisting>
+<para>
+if the collection has elements of fixed size (i.e. a fundamental type), 
+return the contents of the array.
+Its pretty obscure and I don't think anyone uses it.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>value</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>data</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>len</parameter>&nbsp;:</term>
+<listitem><simpara>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-collection-value-iterate" role="function"/>dbus_g_type_collection_value_iterate ()</title>
+<indexterm><primary>dbus_g_type_collection_value_iterate</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_type_collection_value_iterate
+                                                        (const <link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="DBusGTypeSpecializedCollectionIterator">DBusGTypeSpecializedCollectionIterator</link> iterator,
+                                                         <link linkend="gpointer">gpointer</link> user_data);</programlisting>
+<para>
+Calls the given function for each element of the collection. 
+The function is passed a <link linkend="GValue"><type>GValue</type></link> containing the element and the given 
+<parameter>user_data</parameter> parameter. The collection may not be modified while iterating over 
+it.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>value</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GValue"><type>GValue</type></link> holding a collection type.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>iterator</parameter>&nbsp;:</term>
+<listitem><simpara> a function to call for each element
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&nbsp;:</term>
+<listitem><simpara> user data to pass to the <parameter>iterator</parameter>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-map-value-iterate" role="function"/>dbus_g_type_map_value_iterate ()</title>
+<indexterm><primary>dbus_g_type_map_value_iterate</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_type_map_value_iterate       (const <link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="DBusGTypeSpecializedMapIterator">DBusGTypeSpecializedMapIterator</link> iterator,
+                                                         <link linkend="gpointer">gpointer</link> user_data);</programlisting>
+<para>
+Calls the given function for each key/value pair of the map. 
+The function is passed two GValues containing the key/value pair and the given 
+<parameter>user_data</parameter> parameter. The map may not be modified while iterating over 
+it.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>value</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GValue"><type>GValue</type></link> holding a collection type.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>iterator</parameter>&nbsp;:</term>
+<listitem><simpara> a function to call for each element
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&nbsp;:</term>
+<listitem><simpara> user data to pass to the <parameter>iterator</parameter>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-struct-get-member" role="function"/>dbus_g_type_struct_get_member ()</title>
+<indexterm><primary>dbus_g_type_struct_get_member</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            dbus_g_type_struct_get_member       (const <link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="guint">guint</link> member,
+                                                         <link linkend="GValue">GValue</link> *dest);</programlisting>
+<para>
+Fetches a given member of a given struct instance. <parameter>dest</parameter> must be initialised 
+was the correct type for that member, e.g. as returned by 
+<parameter>dbus_g_type_get_struct_member_type</parameter></para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>value</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GValue"><type>GValue</type></link> containing a struct instance
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>member</parameter>&nbsp;:</term>
+<listitem><simpara> the index of a given member
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>dest</parameter>&nbsp;:</term>
+<listitem><simpara> an initialised <link linkend="GValue"><type>GValue</type></link> in which to return the struct member
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> TRUE if sucessful
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-struct-set-member" role="function"/>dbus_g_type_struct_set_member ()</title>
+<indexterm><primary>dbus_g_type_struct_set_member</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            dbus_g_type_struct_set_member       (<link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="guint">guint</link> member,
+                                                         const <link linkend="GValue">GValue</link> *src);</programlisting>
+<para>
+Sets a given member of a struct to a new value. The type of <parameter>src</parameter> must match 
+the exiting type of <parameter>member</parameter> member of the struct.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>value</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GValue"><type>GValue</type></link> containing a struct instance
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>member</parameter>&nbsp;:</term>
+<listitem><simpara> the index of a given member
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>src</parameter>&nbsp;:</term>
+<listitem><simpara> an <link linkend="GValue"><type>GValue</type></link> containing the new value for that struct member
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> TRUE if sucessful
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-struct-get" role="function"/>dbus_g_type_struct_get ()</title>
+<indexterm><primary>dbus_g_type_struct_get</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            dbus_g_type_struct_get              (const <link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="guint">guint</link> member,
+                                                         ...);</programlisting>
+<para>
+Collects the selected values of this struct into the return locations
+provided.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>value</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GValue"><type>GValue</type></link> containing a <link linkend="DBusGTypeStruct"><type>DBusGTypeStruct</type></link> type
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>member</parameter>&nbsp;:</term>
+<listitem><simpara> struct member to get
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&nbsp;:</term>
+<listitem><simpara> location in which to return the value of this member,
+      followed optionally by more member/return locations pairs, followed by
+      by <link linkend="G-MAXUINT:CAPS"><type>G_MAXUINT</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> <link linkend="FALSE:CAPS"><type>FALSE</type></link> on failure
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-struct-set" role="function"/>dbus_g_type_struct_set ()</title>
+<indexterm><primary>dbus_g_type_struct_set</primary></indexterm><programlisting><link linkend="gboolean">gboolean</link>            dbus_g_type_struct_set              (<link linkend="GValue">GValue</link> *value,
+                                                         <link linkend="guint">guint</link> member,
+                                                         ...);</programlisting>
+<para>
+Sets the selected members of the struct in <parameter>value</parameter>.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>value</parameter>&nbsp;:</term>
+<listitem><simpara> a <link linkend="GValue"><type>GValue</type></link> containing a <link linkend="DBusGTypeStruct"><type>DBusGTypeStruct</type></link> type
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>member</parameter>&nbsp;:</term>
+<listitem><simpara> struct member to set
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>...</parameter>&nbsp;:</term>
+<listitem><simpara> value for the first member, followed optionally by
+      more member/value pairs, followed by <link linkend="G-MAXUINT:CAPS"><type>G_MAXUINT</type></link>
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara> <link linkend="FALSE:CAPS"><type>FALSE</type></link> on failure
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-specialized-init" role="function"/>dbus_g_type_specialized_init ()</title>
+<indexterm><primary>dbus_g_type_specialized_init</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_type_specialized_init        (void);</programlisting>
+<para>
+
+</para></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-register-collection" role="function"/>dbus_g_type_register_collection ()</title>
+<indexterm><primary>dbus_g_type_register_collection</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_type_register_collection     (const <link linkend="char">char</link> *name,
+                                                         const <link linkend="DBusGTypeSpecializedCollectionVtable">DBusGTypeSpecializedCollectionVtable</link> *vtable,
+                                                         <link linkend="guint">guint</link> flags);</programlisting>
+<para>
+Defines a new collection container.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>name</parameter>&nbsp;:</term>
+<listitem><simpara> The name of a new collection container
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>vtable</parameter>&nbsp;:</term>
+<listitem><simpara> the vtable defining the new container
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>flags</parameter>&nbsp;:</term>
+<listitem><simpara> As yet unused.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-register-map" role="function"/>dbus_g_type_register_map ()</title>
+<indexterm><primary>dbus_g_type_register_map</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_type_register_map            (const <link linkend="char">char</link> *name,
+                                                         const <link linkend="DBusGTypeSpecializedMapVtable">DBusGTypeSpecializedMapVtable</link> *vtable,
+                                                         <link linkend="guint">guint</link> flags);</programlisting>
+<para>
+Defines a new map container.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>name</parameter>&nbsp;:</term>
+<listitem><simpara> The name of a new map container
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>vtable</parameter>&nbsp;:</term>
+<listitem><simpara> the vtable defining the new container
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>flags</parameter>&nbsp;:</term>
+<listitem><simpara> As yet unused.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-map-peek-vtable" role="function"/>dbus_g_type_map_peek_vtable ()</title>
+<indexterm><primary>dbus_g_type_map_peek_vtable</primary></indexterm><programlisting>const <link linkend="DBusGTypeSpecializedMapVtable">DBusGTypeSpecializedMapVtable</link>* dbus_g_type_map_peek_vtable
+                                                        (<link linkend="GType">GType</link> map_type);</programlisting>
+<para>
+Peek the vtable for a given map specialization</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>map_type</parameter>&nbsp;:</term>
+<listitem><simpara> a gtype of a map specialization
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-collection-peek-vtable" role="function"/>dbus_g_type_collection_peek_vtable ()</title>
+<indexterm><primary>dbus_g_type_collection_peek_vtable</primary></indexterm><programlisting>const <link linkend="DBusGTypeSpecializedCollectionVtable">DBusGTypeSpecializedCollectionVtable</link>* dbus_g_type_collection_peek_vtable
+                                                        (<link linkend="GType">GType</link> collection_type);</programlisting>
+<para>
+Peek the vtable for a given collection specialization</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>collection_type</parameter>&nbsp;:</term>
+<listitem><simpara> a gtype of a collection specialization
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&nbsp;:</term><listitem><simpara>
+
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2>
+<title><anchor id="dbus-g-type-register-struct" role="function"/>dbus_g_type_register_struct ()</title>
+<indexterm><primary>dbus_g_type_register_struct</primary></indexterm><programlisting><link linkend="void">void</link>                dbus_g_type_register_struct         (const <link linkend="char">char</link> *name,
+                                                         const <link linkend="DBusGTypeSpecializedStructVtable">DBusGTypeSpecializedStructVtable</link> *vtable,
+                                                         <link linkend="guint">guint</link> flags);</programlisting>
+<para>
+Defines a new struct container.</para>
+<para>
+
+</para><variablelist role="params">
+<varlistentry><term><parameter>name</parameter>&nbsp;:</term>
+<listitem><simpara> The name of a new struct container
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>vtable</parameter>&nbsp;:</term>
+<listitem><simpara> the vtable defining the new container
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>flags</parameter>&nbsp;:</term>
+<listitem><simpara> As yet unused.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+
+<refsect1><refsect2 /><refsect2 /></refsect1>
+</refentry>
