@@ -35,12 +35,12 @@ pushd "$SOURCE_DIR"
         ;;
         "linux")
 			# copy just the headers to the right place
-			mkdir -p $stage/dbus/
-			cp dbus/*\.h $stage/dbus/
+			mkdir -p "$stage/include/dbus"
+			cp -dp dbus/*.h "$stage/include/dbus"
         ;;
     esac
     mkdir -p "$stage/LICENSES"
-    tail -n 31 COPYING > "$stage/LICENSES/zlib.txt"
+    tail -n 31 COPYING > "$stage/LICENSES/$PROJECT.txt"
 popd
 
 pass

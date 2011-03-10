@@ -10,7 +10,7 @@
       <key>license</key>
       <string>Academic Free License v. 2.1</string>
       <key>license_file</key>
-      <string>dbus-glib-0.92/COPYING</string>
+      <string>LICENSES/dbus-glib.txt</string>
       <key>name</key>
       <string>dbus-glib</string>
       <key>platforms</key>
@@ -35,6 +35,10 @@
               <string>default</string>
             </map>
           </map>
+          <key>manifest</key>
+          <array>
+            <string>include/dbus/*.h</string>
+          </array>
           <key>name</key>
           <string>common</string>
         </map>
