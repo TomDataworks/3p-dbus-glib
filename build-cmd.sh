@@ -28,14 +28,21 @@ eval "$("$AUTOBUILD" source_environment)"
 set -x
 
 stage="$(pwd)/stage"
+
+echo "${VERSION}" > "${stage}/VERSION.txt"
+
 case "$AUTOBUILD_PLATFORM" in
-    "windows")
-        echo "dbus-glib headers only for linux"
-    ;;
-    "darwin")
-        echo "dbus-glib headers only for linux"
-    ;;
     "linux")
+        pushd "$SOURCE_DIR"
+            # copy just the headers to the right place
+            mkdir -p "$stage/include/dbus"
+            cp -dp dbus/*.h "$stage/include/dbus"
+        popd
+        pushd "$DBUS_SOURCE_DIR"
+            cp -dp dbus/*.h "$stage/include/dbus"
+        popd
+    ;;
+    "linux64")
         pushd "$SOURCE_DIR"
             # copy just the headers to the right place
             mkdir -p "$stage/include/dbus"
